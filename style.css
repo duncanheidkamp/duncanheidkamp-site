@@ -1,0 +1,174 @@
+/* ============================================================
+   duncanheidkamp.com — static homepage
+   Font: Space Grotesk (Google Fonts)
+   Design: white background, black text, minimal, mobile-first
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: #ffffff;
+  color: #000000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Layout container ── */
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 64px 24px 48px;
+}
+
+/* ── Header ── */
+header {
+  margin-bottom: 64px;
+}
+
+h1 {
+  font-size: 72px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+
+/* ── Projects list ── */
+.projects {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Each project row */
+.project {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+/* Large gray number (e.g. "01") */
+.number {
+  font-size: 36px;
+  font-weight: 700;
+  color: #d4d4d4;
+  line-height: 1;
+  min-width: 52px;
+  flex-shrink: 0;
+  /* Align baseline with the title text */
+  padding-top: 2px;
+}
+
+.project-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Bold title — either a link or plain span */
+.project-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000000;
+  text-decoration: none;
+  line-height: 1.2;
+}
+
+/* Arrow only shows when there is a link */
+a.project-title .arrow {
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+
+a.project-title:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+a.project-title:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* Description text */
+.project-desc {
+  font-size: 15px;
+  font-weight: 400;
+  color: #444444;
+  line-height: 1.5;
+}
+
+/* Locked items — muted appearance, no link affordance */
+.project.locked .number {
+  color: #e8e8e8;
+}
+
+.project.locked .project-title {
+  color: #aaaaaa;
+  cursor: default;
+}
+
+.project.locked .project-desc {
+  color: #bbbbbb;
+}
+
+/* ── Footer ── */
+footer {
+  margin-top: 72px;
+  padding-top: 24px;
+  border-top: 1px solid #e8e8e8;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.copyright {
+  font-size: 14px;
+  color: #888888;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-links a {
+  font-size: 14px;
+  color: #000000;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── Mobile adjustments ── */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 48px;
+  }
+
+  .number {
+    font-size: 28px;
+    min-width: 42px;
+  }
+
+  .project-title {
+    font-size: 18px;
+  }
+
+  .container {
+    padding: 48px 20px 40px;
+  }
+}
