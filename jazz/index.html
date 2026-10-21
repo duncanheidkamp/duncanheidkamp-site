@@ -2,54 +2,116 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jazz — Duncan Heidkamp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Ears Wide Open — Jazz — Duncan Heidkamp</title>
+  <meta name="description" content="A scroll-through jazz listening course: short lessons, then the music, with a painting to look at while you listen. Inspired by Ted Gioia's How to Listen to Jazz." />
+  <meta name="theme-color" content="#ffffff" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/jazz/listen.css" />
 </head>
 <body>
 
-  <div class="container">
+  <div class="progress" aria-hidden="true"><div class="progress-fill"></div></div>
 
-    <header>
-      <h1>Jazz</h1>
-    </header>
+  <header class="hero" id="top">
+    <div class="col">
+      <a class="crumb" href="/">Duncan Heidkamp</a>
+      <h1>Ears Wide Open</h1>
+      <p class="dek">A slow scroll through jazz. Read a short lesson, press play, and look at a painting while the music does the teaching.</p>
 
-    <main>
-      <ol class="projects">
+      <ul class="setup">
+        <li><span>01</span>Put on headphones, or sit near good speakers.</li>
+        <li><span>02</span>Put your phone face down. When a track plays, the words fade and it's just the painting and the music.</li>
+        <li><span>03</span>There's no finish line. 33 recordings, about three hours. This page remembers where you stopped.</li>
+      </ul>
 
-        <!-- 01 -->
-        <li class="project">
-          <span class="number">01</span>
-          <div class="project-body">
-            <a class="project-title" href="/jazz/ears-wide-open.pdf" target="_blank" rel="noopener">
-              Ears Wide Open <span class="arrow">→</span>
-            </a>
-            <p class="project-desc">An 11-page field guide to listening to jazz, inspired by Ted Gioia's How to Listen to Jazz — five lessons, a listening routine, and an eight-week plan.</p>
-          </div>
-        </li>
+      <div class="actions">
+        <a class="btn btn-primary" href="#lesson-1">Begin <span aria-hidden="true">↓</span></a>
+        <a class="btn btn-ghost resume" href="#" hidden></a>
+      </div>
 
-        <!-- 02 — locked -->
-        <li class="project locked">
-          <span class="number">02</span>
-          <div class="project-body">
-            <span class="project-title">Listening Trainer</span>
-            <p class="project-desc">In progress — guided listening with timed cues over jazz recordings.</p>
-          </div>
-        </li>
+      <p class="fine">Based on <a href="/jazz/ears-wide-open.pdf" target="_blank" rel="noopener">the Ears Wide Open field guide (PDF)</a>, inspired by Ted Gioia's <em>How to Listen to Jazz</em> and <em>The Honest Broker</em>. Music plays from official YouTube uploads; paintings are public-domain works from The Metropolitan Museum of Art.</p>
+    </div>
+  </header>
 
-      </ol>
-    </main>
+  <main id="course">
+    <noscript>
+      <div class="col noscript">
+        <p>This listening page needs JavaScript to load the music. You can still read <a href="/jazz/ears-wide-open.pdf">the field guide as a PDF</a>.</p>
+      </div>
+    </noscript>
+  </main>
 
-    <footer>
+  <footer class="outro">
+    <div class="col">
+      <span class="num">→</span>
+      <h2>Then listen again</h2>
+      <p class="dek">Ten tracks you know inside out will teach you more than a hundred you've heard once.</p>
+      <p>Pick one recording from today and give it five passes: once for the whole thing, once following only the drums, once only the bass, once only one soloist, and once counting the form. Come back to it a week later without notes.</p>
+      <p>And go hear it live. A recording is a snapshot of one night; in a room you can watch the drummer cue the band.</p>
       <nav class="footer-links">
-        <a href="/">← Home</a>
+        <a href="/jazz/ears-wide-open.pdf" target="_blank" rel="noopener">Field guide (PDF)</a>
+        <a href="#top" class="to-top">Back to top</a>
+        <a href="/">Home</a>
       </nav>
-    </footer>
+      <p class="fine">An independent study companion, not affiliated with Ted Gioia or his publishers.</p>
+    </div>
+  </footer>
 
-  </div>
+  <!-- Persistent mini player (one YouTube player for the whole page) -->
+  <aside class="player is-off" aria-label="Now playing">
+    <div class="player-video"><div id="yt"></div></div>
+    <div class="player-meta">
+      <span class="player-label">Now playing</span>
+      <span class="player-title"></span>
+      <span class="player-artist"></span>
+      <div class="player-controls">
+        <button type="button" class="pc-toggle" aria-label="Pause">Pause</button>
+        <button type="button" class="pc-find">Painting</button>
+        <button type="button" class="pc-close" aria-label="Stop and close player">✕</button>
+      </div>
+    </div>
+  </aside>
 
+  <template id="tpl-lesson">
+    <section class="lesson">
+      <div class="col">
+        <span class="num"></span>
+        <p class="kicker"></p>
+        <h2></h2>
+        <p class="dek"></p>
+        <div class="body"></div>
+        <p class="next-cue">Scroll for the music <span aria-hidden="true">↓</span></p>
+      </div>
+    </section>
+  </template>
+
+  <template id="tpl-track">
+    <section class="room">
+      <figure class="art">
+        <img alt="" loading="lazy" decoding="async" />
+      </figure>
+      <div class="room-top">
+        <span class="room-count"></span>
+      </div>
+      <div class="card">
+        <p class="card-artist"></p>
+        <h3 class="card-title"></h3>
+        <p class="card-listen"></p>
+        <div class="card-row">
+          <button type="button" class="play">
+            <span class="play-icon" aria-hidden="true"></span>
+            <span class="play-text">Play</span>
+          </button>
+          <a class="yt-link" target="_blank" rel="noopener">Open on YouTube</a>
+        </div>
+        <p class="card-art"><a target="_blank" rel="noopener"></a><span class="pairing"></span></p>
+      </div>
+    </section>
+  </template>
+
+  <script src="/jazz/listen.js" defer></script>
 </body>
 </html>

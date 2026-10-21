@@ -1,0 +1,683 @@
+{
+  "lessons": [
+    {
+      "id": 1,
+      "kicker": "Lesson 1",
+      "title": "Feel the swing",
+      "dek": "Swing is hard to define but easy to hear, once you know what its absence sounds like.",
+      "body": [
+        "Great jazz rhythm isn’t mechanical. Players lean slightly ahead of or behind the pulse, and the tension between the steady beat and where the notes actually land is a big part of what swing is.",
+        "In a swinging band, the bassist and drummer lock together. Listen for the walking bass, one note per beat, and the ride cymbal, the shimmering “ding, ding-a ding” the drummer plays to carry the time. When those two agree, everyone else is free to float."
+      ]
+    },
+    {
+      "id": 2,
+      "kicker": "Lesson 2",
+      "title": "Get inside the sound",
+      "dek": "The listener’s job isn’t only to follow the notes. It’s to hear what the musician is doing to them.",
+      "body": [
+        "Two saxophonists can play the same melody and sound like different people. Listen for tone (breathy or bright?), dynamics (does a phrase swell or whisper?), articulation (how notes start and end), phrasing (where the player breathes and pauses), and interplay (who is reacting to whom).",
+        "A good solo has shape: it states an idea, develops it, builds tension, and resolves. Try to hear it the way you’d hear someone telling a story at dinner."
+      ]
+    },
+    {
+      "id": 3,
+      "kicker": "Lesson 3",
+      "title": "Hear the architecture",
+      "dek": "Learn two shapes and you can follow most of the classic repertoire.",
+      "body": [
+        "The 12-bar blues: three lines of four bars. The first states, the second answers, the third resolves. One trip through is a chorus.",
+        "The 32-bar song form, AABA: eight bars of tune, eight again, an eight-bar bridge that changes the subject, then home. A typical performance states the melody, lets each player improvise over the form, and brings the melody back at the end."
+      ]
+    },
+    {
+      "id": 4,
+      "kicker": "Lesson 4",
+      "title": "Read the map",
+      "dek": "Jazz is a buffet of styles. You don’t need to love them all; you need to recognize them.",
+      "body": [
+        "These recordings run roughly in order, from 1930s swing through bebop, cool, hard bop, fusion, ECM and the 1980s return to tradition.",
+        "Styles are easiest to hear by contrast. As each one starts, think back to the one before it: bebop sounds more radical right after swing, and hard bop sounds earthier right after cool."
+      ]
+    },
+    {
+      "id": 5,
+      "kicker": "Lesson 5",
+      "title": "Listen forward",
+      "dek": "Music that seems to have no rules, and musicians making records right now.",
+      "body": [
+        "Avant-garde jazz often comes wrapped in heavy theory. Gioia’s advice is to set that down and respond emotionally first: listen for texture, intensity, and how the players react to each other.",
+        "And don’t stop at the dead legends. Jazz is a living music, and a healthy listening life mixes the canon with people making records now."
+      ]
+    }
+  ],
+  "tracks": [
+    {
+      "id": "l1-01",
+      "lesson": 1,
+      "artist": "Count Basie Orchestra",
+      "title": "Jumpin’ at the Woodside",
+      "year": "1938",
+      "listen_for": "Tap your foot with Walter Page’s bass, then move your attention to Jo Jones’s cymbals. That light, steady push is swing.",
+      "youtube_id": "qL0Cy4Dyaac",
+      "art": {
+        "title": "Divan Japonais",
+        "artist": "Henri de Toulouse-Lautrec",
+        "date": "1892–93",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/dp/web-large/DT224360.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/dp/original/DT224360.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/334197",
+        "pairing": "A packed Paris café-concert in flat, punchy color; the same nightlife buzz as Basie's band riffing at full swing."
+      }
+    },
+    {
+      "id": "l1-02",
+      "lesson": 1,
+      "artist": "Charlie Parker",
+      "title": "Ko-Ko",
+      "year": "1945",
+      "listen_for": "The burn: a tempo few bands can hold. Let Bird’s lines blur past and listen to the drums keeping it all upright.",
+      "youtube_id": "JmF7fv_mpDM",
+      "art": {
+        "title": "Under the Wave off Kanagawa (The Great Wave)",
+        "artist": "Katsushika Hokusai",
+        "date": "ca. 1830–32",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP130155.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/as/original/DP130155.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/45434",
+        "pairing": "Bird's tempo is a breaking wave: huge speed, but every claw of foam is exactly where it should be."
+      }
+    },
+    {
+      "id": "l1-03",
+      "lesson": 1,
+      "artist": "Miles Davis Quintet",
+      "title": "’Round Midnight",
+      "year": "1956",
+      "listen_for": "A ballad that waits. Paul Chambers and Philly Joe Jones stay quiet, then kick the band into tempo for the solos.",
+      "youtube_id": "7r77GLcGlvQ",
+      "art": {
+        "title": "Nocturne (Nocturne: The Thames at Battersea)",
+        "artist": "James McNeill Whistler",
+        "date": "1878",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/dp/web-large/DP813769.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/dp/original/DP813769.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/337702",
+        "pairing": "A river dissolving into blue-gray night; Monk's ballad in its quietest hour."
+      }
+    },
+    {
+      "id": "l1-04",
+      "lesson": 1,
+      "artist": "Miles Davis Quintet",
+      "title": "Footprints",
+      "year": "1966",
+      "listen_for": "Ron Carter repeats one bass figure while Tony Williams keeps reshaping the time around it. Simple, and constantly moving.",
+      "youtube_id": "O-rrt8IYhe0",
+      "art": {
+        "title": "Sudden Shower over Shin-Ōhashi Bridge and Atake",
+        "artist": "Utagawa Hiroshige",
+        "date": "1857",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP130156.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/as/original/DP130156.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/55433",
+        "pairing": "Figures hurrying across a bridge under slanting rain; it has the same restless, dark forward motion as the tune's minor blues in 6/4."
+      }
+    },
+    {
+      "id": "l2-01",
+      "lesson": 2,
+      "artist": "Coleman Hawkins",
+      "title": "Body and Soul",
+      "year": "1939",
+      "listen_for": "A big, robust tenor sound. Hawkins barely states the melody before he is improvising, and every note is full.",
+      "youtube_id": "LuNrVHCBSjE",
+      "art": {
+        "title": "Aristotle with a Bust of Homer",
+        "artist": "Rembrandt (Rembrandt van Rijn)",
+        "date": "1653",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/ep/web-large/DP-30758-001.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/ep/original/DP-30758-001.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/437394",
+        "pairing": "Deep shadow and burnished gold: Hawkins's big, warm, deliberate tone in paint."
+      }
+    },
+    {
+      "id": "l2-02",
+      "lesson": 2,
+      "artist": "Count Basie Orchestra with Lester Young",
+      "title": "Lester Leaps In",
+      "year": "1939",
+      "listen_for": "Same instrument as Hawkins, opposite sound: light, airy, relaxed. Could you tell the two apart from two notes?",
+      "youtube_id": "FmbHVdmFJjE",
+      "art": {
+        "title": "Dancers, Pink and Green",
+        "artist": "Edgar Degas",
+        "date": "ca. 1890",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/ep/web-large/DP-14936-033.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/ep/original/DP-14936-033.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/436140",
+        "pairing": "Dancers poised and floating in the wings, as light on their feet as Lester's airy, buoyant lines."
+      }
+    },
+    {
+      "id": "l2-03",
+      "lesson": 2,
+      "artist": "Duke Ellington Orchestra with Ben Webster",
+      "title": "All Too Soon",
+      "year": "1940",
+      "listen_for": "Dynamics as storytelling. Listen to how Webster’s tenor swells and then drops almost to a breath.",
+      "youtube_id": "WUpiIhY-pLE",
+      "art": {
+        "title": "Cremorne Gardens, No. 2",
+        "artist": "James McNeill Whistler",
+        "date": "ca. 1870–80",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/ad/web-large/DT2780.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/ad/original/DT2780.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/13223",
+        "pairing": "An elegant crowd fading into dusk at a pleasure garden; wistful and over too soon, like Webster's ballad."
+      }
+    },
+    {
+      "id": "l2-04",
+      "lesson": 2,
+      "artist": "Louis Armstrong & His Hot Five",
+      "title": "West End Blues",
+      "year": "1928",
+      "listen_for": "The opening cadenza: bends, smears, and a hard attack. Listen to how each note starts and ends, not just which note it is.",
+      "youtube_id": "BTxhgmk_ofk",
+      "art": {
+        "title": "Circus Sideshow (Parade de cirque)",
+        "artist": "Georges Seurat",
+        "date": "1887–88",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/ep/web-large/DP375450_cropped.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/ep/original/DP375450_cropped.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/437654",
+        "pairing": "A lone horn player on a gaslit stage in the night; it suits the solo trumpet call that opens Armstrong's record."
+      }
+    },
+    {
+      "id": "l2-05",
+      "lesson": 2,
+      "artist": "Charlie Parker",
+      "title": "Now’s the Time",
+      "year": "1945",
+      "listen_for": "Try to hum along with Bird. You will fail note for note, and that’s fine; the shape of the phrases will start to sink in.",
+      "youtube_id": "3Y8aVEeP0R0",
+      "art": {
+        "title": "The Third-Class Carriage",
+        "artist": "Honoré Daumier",
+        "date": "1864",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/ep/web-large/DP-21027-001.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/ep/original/DP-21027-001.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/436095",
+        "pairing": "Ordinary people jostling along in a crowded car, drawn with plain-spoken grit, which fits Bird's street-corner blues riff."
+      }
+    },
+    {
+      "id": "l2-06",
+      "lesson": 2,
+      "artist": "Sonny Rollins",
+      "title": "St. Thomas",
+      "year": "1956",
+      "listen_for": "Rollins takes a small idea and keeps developing it, chorus after chorus. Follow it like someone telling a story.",
+      "youtube_id": "fdakJqKPRDE",
+      "art": {
+        "title": "Flower Garden and Bungalow, Bermuda",
+        "artist": "Winslow Homer",
+        "date": "1899",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/ad/web-large/DP-21451-001.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/ad/original/DP-21451-001.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/11121",
+        "pairing": "Sun, bright flowers and island air in quick watercolor strokes, as easygoing as Rollins's calypso."
+      }
+    },
+    {
+      "id": "l2-07",
+      "lesson": 2,
+      "artist": "Bill Evans Trio",
+      "title": "Waltz for Debby (live)",
+      "year": "1961",
+      "listen_for": "Three equal voices. Listen for who leads and who answers: piano, bass, and drums in conversation.",
+      "youtube_id": "6JO2WE7atAM",
+      "art": {
+        "title": "Madame Georges Charpentier and Her Children",
+        "artist": "Auguste Renoir",
+        "date": "1878",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/ep/web-large/DP-35674-001.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/ep/original/DP-35674-001.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/438815",
+        "pairing": "A soft, tender family scene with children at its heart, for Evans's lilting waltz written for his young niece."
+      }
+    },
+    {
+      "id": "l2-08",
+      "lesson": 2,
+      "artist": "Ahmad Jamal Trio",
+      "title": "Poinciana (live)",
+      "year": "1958",
+      "listen_for": "Recorded in Chicago. Listen to how much space Jamal leaves, and how the bass and drums fill it with a groove.",
+      "youtube_id": "Z0e2G32f3IU",
+      "art": {
+        "title": "Oleanders",
+        "artist": "Vincent van Gogh",
+        "date": "1888",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/ep/web-large/DT1494.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/ep/original/DT1494.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/436530",
+        "pairing": "A flowering branch swaying in a vase; it is relaxed and blooming, with a gentle sway like Jamal's groove (a poinciana is a flowering tree too)."
+      }
+    },
+    {
+      "id": "l3-01",
+      "lesson": 3,
+      "artist": "Miles Davis",
+      "title": "Freddie Freeloader",
+      "year": "1959",
+      "listen_for": "A 12-bar blues. Count the bars of the opening melody until you feel where each chorus starts again.",
+      "youtube_id": "ZZcuSBouhVA",
+      "art": {
+        "title": "The Spanish Singer",
+        "artist": "Edouard Manet",
+        "date": "1860",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/ep/web-large/dp130799.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/ep/original/dp130799.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/436944",
+        "pairing": "A slouching guitarist playing for himself, unhurried and a little cocky, as loose as this blues."
+      }
+    },
+    {
+      "id": "l3-02",
+      "lesson": 3,
+      "artist": "Miles Davis",
+      "title": "So What",
+      "year": "1959",
+      "listen_for": "AABA form. The bridge simply shifts the whole band up a half step. Notice it arrive, and notice how few notes Miles plays.",
+      "youtube_id": "ylXk1LBvIqU",
+      "art": {
+        "title": "Moonlight, Strandgade 30",
+        "artist": "Vilhelm Hammershøi",
+        "date": "1900–1906",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/ep/web-large/DP273105.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/ep/original/DP273105.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/441933",
+        "pairing": "An almost empty room in cool moonlight; spare and spacious, like the two chords of So What."
+      }
+    },
+    {
+      "id": "l3-03",
+      "lesson": 3,
+      "artist": "Thelonious Monk",
+      "title": "Straight, No Chaser",
+      "year": "1967",
+      "listen_for": "A blues built from one angular phrase. Count the choruses, and enjoy how Monk puts notes in places you don’t expect.",
+      "youtube_id": "7naC7TF9OU0",
+      "art": {
+        "title": "The Card Players",
+        "artist": "Paul Cézanne",
+        "date": "1890–92",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/ep/web-large/DP231550.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/ep/original/DP231550.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/435868",
+        "pairing": "Blunt, blocky forms set slightly off-kilter, which suits Monk's angular blues with no chaser."
+      }
+    },
+    {
+      "id": "l3-04",
+      "lesson": 3,
+      "artist": "Miles Davis Quintet",
+      "title": "Oleo",
+      "year": "1956",
+      "listen_for": "A fast AABA tune. Hum the melody quietly under the solos and listen for the moment each bridge arrives.",
+      "youtube_id": "qxq3viYU-c4",
+      "art": {
+        "title": "Recovering the Stolen Jewel from the Palace of the Dragon King",
+        "artist": "Utagawa Kuniyoshi",
+        "date": "1853",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP146820.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/as/original/DP146820.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/45281",
+        "pairing": "A daring getaway in swirling motion across three panels, matching the slippery head of a fast tune on rhythm changes."
+      }
+    },
+    {
+      "id": "l4-01",
+      "lesson": 4,
+      "artist": "Duke Ellington Orchestra",
+      "title": "Ko-Ko",
+      "year": "1940",
+      "listen_for": "Swing at its most orchestral: Ellington’s sections pass dark, dramatic riffs back and forth.",
+      "youtube_id": "WY5nScVCLg8",
+      "art": {
+        "title": "Whalers",
+        "artist": "Joseph Mallord William Turner",
+        "date": "ca. 1845",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/ep/web-large/DP-13360-001.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/ep/original/DP-13360-001.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/437854",
+        "pairing": "Dark churning sea and spray, as ominous and powerful as Ellington's minor-key brass."
+      }
+    },
+    {
+      "id": "l4-02",
+      "lesson": 4,
+      "artist": "Count Basie Orchestra",
+      "title": "One O’Clock Jump",
+      "year": "1937",
+      "listen_for": "The swing band as a riff machine. Listen to the sections trading short figures behind each soloist.",
+      "youtube_id": "bVZLx-Y4OV8",
+      "art": {
+        "title": "Study for \"A Sunday on La Grande Jatte\"",
+        "artist": "Georges Seurat",
+        "date": "1884",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/ep/web-large/DP259921.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/ep/original/DP259921.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/437658",
+        "pairing": "An afternoon built from countless even dabs; it has the steady, gentle four-to-the-bar of Basie's rhythm section."
+      }
+    },
+    {
+      "id": "l4-03",
+      "lesson": 4,
+      "artist": "Thelonious Monk",
+      "title": "Misterioso",
+      "year": "1948",
+      "listen_for": "Bebop as music for listening, not dancing. A spare, walking melody and Monk’s deliberately ‘wrong’ notes.",
+      "youtube_id": "coEGhvEAT8o",
+      "art": {
+        "title": "Day (Le Jour), from the series Dreams (Songes)",
+        "artist": "Odilon Redon",
+        "date": "1891",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/dp/web-large/DP824896.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/dp/original/DP824896.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/359761",
+        "pairing": "A dark room with one strange window of light, as hushed and enigmatic as Misterioso."
+      }
+    },
+    {
+      "id": "l4-04",
+      "lesson": 4,
+      "artist": "Miles Davis",
+      "title": "Boplicity",
+      "year": "1949",
+      "listen_for": "Cool jazz: softer tones and arranged textures. Hear how the horns blend instead of competing.",
+      "youtube_id": "yD1vqbKTBrM",
+      "art": {
+        "title": "Young Woman with a Water Pitcher",
+        "artist": "Johannes Vermeer",
+        "date": "ca. 1662",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/ep/web-large/DP353257.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/ep/original/DP353257.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/437881",
+        "pairing": "Cool blues and soft, layered light with perfect poise, close to Gil Evans's voicings for the nonet."
+      }
+    },
+    {
+      "id": "l4-05",
+      "lesson": 4,
+      "artist": "Dave Brubeck Quartet",
+      "title": "Take Five",
+      "year": "1959",
+      "listen_for": "Five beats to the bar instead of four. Count along with the piano vamp and feel how it still swings.",
+      "youtube_id": "ryA6eHZNnXY",
+      "art": {
+        "title": "South Wind, Clear Sky (Red Fuji)",
+        "artist": "Katsushika Hokusai",
+        "date": "ca. 1830–32",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP141053.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/as/original/DP141053.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/55736",
+        "pairing": "One iconic shape, unhurried and perfectly balanced, as calm and cool as Desmond's 5/4."
+      }
+    },
+    {
+      "id": "l4-06",
+      "lesson": 4,
+      "artist": "Art Blakey & the Jazz Messengers",
+      "title": "Moanin’",
+      "year": "1958",
+      "listen_for": "Hard bop: bebop with blues and gospel grit. Listen for the call and response between piano and horns.",
+      "youtube_id": "fsJ3JjpZyoA",
+      "art": {
+        "title": "Haystacks: Autumn",
+        "artist": "Jean-François Millet",
+        "date": "ca. 1874",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/ep/web-large/DP124093.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/ep/original/DP124093.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/437097",
+        "pairing": "Heavy earth under a storm-lit sky, rooted and soulful, which fits the gospel call-and-response of Moanin'."
+      }
+    },
+    {
+      "id": "l4-07",
+      "lesson": 4,
+      "artist": "Miles Davis",
+      "title": "In a Silent Way",
+      "year": "1969",
+      "listen_for": "The start of fusion. Electric keyboards and guitar, almost no chords moving. Let it wash over you.",
+      "youtube_id": "8bdBONxS-Es",
+      "art": {
+        "title": "Ville-d'Avray",
+        "artist": "Camille Corot",
+        "date": "1870",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/ep/web-large/DP-19283-001.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/ep/original/DP-19283-001.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/435988",
+        "pairing": "Silvery trees over still water, floating and pastoral, a scene that waits as patiently as the music."
+      }
+    },
+    {
+      "id": "l4-08",
+      "lesson": 4,
+      "artist": "Weather Report",
+      "title": "Birdland",
+      "year": "1977",
+      "listen_for": "Fusion with a big hook: electric bass, synthesizers, and a melody that builds layer by layer.",
+      "youtube_id": "SvhmaNlLgRM",
+      "art": {
+        "title": "Fireworks at Ryōgoku Bridge",
+        "artist": "Utagawa Hiroshige",
+        "date": "1858",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/as/web-large/DP121524.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/as/original/DP121524.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/37093",
+        "pairing": "A single burst of light over a night crowd; it is festive and electric, like Zawinul's anthem."
+      }
+    },
+    {
+      "id": "l4-09",
+      "lesson": 4,
+      "artist": "Keith Jarrett",
+      "title": "The Köln Concert, Part I",
+      "year": "1975",
+      "listen_for": "A solo piano improvisation, made up on the spot in one sitting. Notice how long he stays on a single mood.",
+      "youtube_id": "rATrCj2qnts",
+      "art": {
+        "title": "Two Men Contemplating the Moon",
+        "artist": "Caspar David Friedrich",
+        "date": "ca. 1825–30",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/ep/web-large/DP-31997-001-NEW.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/ep/original/DP-31997-001-NEW.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/438417",
+        "pairing": "Two figures lost in a long, reverent gaze, for Jarrett's improvised meditation that slowly unfolds."
+      }
+    },
+    {
+      "id": "l4-10",
+      "lesson": 4,
+      "artist": "Jan Garbarek",
+      "title": "Witchi-Tai-To",
+      "year": "1974",
+      "listen_for": "The ECM sound: spacious, chamber-like, and quiet. Music for people who listen closely.",
+      "youtube_id": "6XVvOcyHDI8",
+      "art": {
+        "title": "The North Cape by Moonlight",
+        "artist": "Peder Balke",
+        "date": "1848",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/ep/web-large/DP-1740-001_cropped.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/ep/original/DP-1740-001_cropped.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/441379",
+        "pairing": "A cold northern sea under moonlight, as vast and hymn-like as the ECM sound."
+      }
+    },
+    {
+      "id": "l4-11",
+      "lesson": 4,
+      "artist": "Wynton Marsalis",
+      "title": "Black Codes (From the Underground)",
+      "year": "1985",
+      "listen_for": "The neoclassical return to acoustic jazz, played with ferocious precision. Compare its energy with the 1960s Miles quintet.",
+      "youtube_id": "8Rw9bgGPfPU",
+      "art": {
+        "title": "The sleep of reason produces monsters (Los Caprichos, plate 43)",
+        "artist": "Goya (Francisco de Goya y Lucientes)",
+        "date": "1799",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/dp/web-large/DP816992.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/dp/original/DP816992.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/338473",
+        "pairing": "Dark, fierce and political, with menace swarming from the shadows; it suits a tense, coded protest piece."
+      }
+    },
+    {
+      "id": "l5-01",
+      "lesson": 5,
+      "artist": "Ornette Coleman",
+      "title": "Lonely Woman",
+      "year": "1959",
+      "listen_for": "Feel it first, analyze later. The rhythm section races while the horns play a slow, aching melody above it.",
+      "youtube_id": "NeDXt-zjX8o",
+      "art": {
+        "title": "Madame X (Virginie Amélie Avegno Gautreau)",
+        "artist": "John Singer Sargent",
+        "date": "1883–84",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/ad/web-large/DP-29006-001.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/ad/original/DP-29006-001.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/12127",
+        "pairing": "A woman set apart in stark black against bare pale skin, proud and alone, like Ornette's keening melody."
+      }
+    },
+    {
+      "id": "l5-02",
+      "lesson": 5,
+      "artist": "Charles Mingus",
+      "title": "Better Git It in Your Soul",
+      "year": "1959",
+      "listen_for": "Gospel shouts, hand claps, and shifting tempos. Write down adjectives, not analysis.",
+      "youtube_id": "E7hoX7golZI",
+      "art": {
+        "title": "The Harvesters",
+        "artist": "Pieter Bruegel the Elder",
+        "date": "1565",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/ep/web-large/DP119115.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/ep/original/DP119115.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/435809",
+        "pairing": "A whole community working, eating and sprawling in the sun, as earthy and joyfully crowded as Mingus's revival meeting."
+      }
+    },
+    {
+      "id": "l5-03",
+      "lesson": 5,
+      "artist": "John Coltrane",
+      "title": "A Love Supreme, Pt. I – Acknowledgement",
+      "year": "1965",
+      "listen_for": "Listen for Jimmy Garrison and Elvin Jones, the last great bass-and-drums pairing in this guide, and the four-note chant.",
+      "youtube_id": "vMCHDC2Lurk",
+      "art": {
+        "title": "Wheat Field with Cypresses",
+        "artist": "Vincent van Gogh",
+        "date": "1889",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/ep/web-large/DP-42549-001.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/ep/original/DP-42549-001.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/436535",
+        "pairing": "Sky and cypress churning with devotional fervor; Coltrane's prayer in brushstrokes."
+      }
+    },
+    {
+      "id": "l5-04",
+      "lesson": 5,
+      "artist": "Kamasi Washington",
+      "title": "Change of the Guard",
+      "year": "2015",
+      "listen_for": "Right after Coltrane: what carried over, and what is clearly new? Choir, strings, and two drummers.",
+      "youtube_id": "uz2nxBio2gg",
+      "art": {
+        "title": "Heart of the Andes",
+        "artist": "Frederic Edwin Church",
+        "date": "1859",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/ad/web-large/DT78.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/ad/original/DT78.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/10481",
+        "pairing": "A vast panorama on an epic, cinematic scale, matching the size of The Epic."
+      }
+    },
+    {
+      "id": "l5-05",
+      "lesson": 5,
+      "artist": "Makaya McCraven",
+      "title": "In These Times",
+      "year": "2022",
+      "listen_for": "A Chicago drummer and producer. Live playing, edited and layered like a hip-hop record.",
+      "youtube_id": "QXeOluZers4",
+      "art": {
+        "title": "Mäda Primavesi",
+        "artist": "Gustav Klimt",
+        "date": "1912–13",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/ep/web-large/DP243354.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/ep/original/DP243354.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/436819",
+        "pairing": "Layer on layer of looping pattern around a confident figure, like McCraven's stacked, cycling grooves."
+      }
+    },
+    {
+      "id": "l5-06",
+      "lesson": 5,
+      "artist": "Cécile McLorin Salvant",
+      "title": "Ghost Song",
+      "year": "2022",
+      "listen_for": "A living singer who moves between standards, folk, and theater. A good place to start following someone new.",
+      "youtube_id": "gOMA9M3ux1M",
+      "art": {
+        "title": "Island of the Dead",
+        "artist": "Arnold Böcklin",
+        "date": "1880",
+        "museum": "The Metropolitan Museum of Art",
+        "image_url": "https://images.metmuseum.org/CRDImages/ep/web-large/DP-14201-003.jpg",
+        "image_original": "https://images.metmuseum.org/CRDImages/ep/original/DP-14201-003.jpg",
+        "page_url": "https://www.metmuseum.org/art/collection/search/435683",
+        "pairing": "A pale figure drifting toward a dark, silent island, a haunting image of longing and loss for Ghost Song."
+      }
+    }
+  ]
+}

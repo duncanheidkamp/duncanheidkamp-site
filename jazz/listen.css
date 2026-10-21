@@ -1,0 +1,222 @@
+/* ============================================================
+   duncanheidkamp.com/jazz — Ears Wide Open listening page
+   Fonts: Space Grotesk (site) + Newsreader (reading)
+   Light lessons, dark "gallery rooms" for each recording.
+   ============================================================ */
+
+:root {
+  --paper: #ffffff;
+  --ink: #000000;
+  --ink-2: #444444;
+  --muted: #888888;
+  --rule: #e8e8e8;
+  --num: #d4d4d4;
+  --room: #0e0d0b;
+  --room-ink: #f4f0e8;
+  --room-ink-2: rgba(244, 240, 232, 0.72);
+  --room-ink-3: rgba(244, 240, 232, 0.5);
+  --accent: #c46a26;
+  --sans: 'Space Grotesk', system-ui, sans-serif;
+  --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: inherit; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+[hidden] { display: none !important; }
+
+.col { max-width: 640px; margin: 0 auto; padding: 0 24px; }
+
+/* ── Progress rail ── */
+.progress { position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 50; background: transparent; }
+.progress-fill { height: 100%; width: 0; background: var(--accent); transition: width 0.2s linear; }
+
+/* ── Hero ── */
+.hero { padding: 64px 0 96px; }
+.crumb { font-size: 14px; font-weight: 500; text-decoration: none; color: var(--muted); }
+.crumb:hover { color: var(--ink); }
+.hero h1 { font-size: 72px; font-weight: 700; letter-spacing: -1px; line-height: 1; margin: 40px 0 20px; }
+.dek { font-family: var(--serif); font-size: 22px; line-height: 1.45; color: var(--ink-2); }
+
+.setup { list-style: none; margin: 48px 0; display: grid; gap: 18px; }
+.setup li { display: grid; grid-template-columns: 44px 1fr; font-size: 16px; line-height: 1.5; color: var(--ink-2); }
+.setup span { font-weight: 700; color: var(--num); font-size: 15px; padding-top: 1px; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  min-height: 48px; padding: 0 22px; border-radius: 999px;
+  font-size: 16px; font-weight: 700; text-decoration: none;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.btn-primary { background: var(--ink); color: var(--paper); }
+.btn-primary:hover { transform: translateY(1px); }
+.btn-ghost { border: 1.5px solid var(--ink); }
+.btn-ghost:hover { background: #f4f4f4; }
+
+.fine { font-size: 13px; line-height: 1.55; color: var(--muted); }
+.fine a { color: var(--ink); text-underline-offset: 2px; }
+
+/* ── Lesson sections ── */
+.lesson { padding: 120px 0 96px; }
+.num { display: block; font-size: 64px; font-weight: 700; line-height: 1; color: var(--num); margin-bottom: 20px; }
+.kicker { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.lesson h2, .outro h2 { font-size: 44px; font-weight: 700; letter-spacing: -0.5px; line-height: 1.05; margin-bottom: 18px; }
+.lesson .dek { margin-bottom: 32px; }
+.body p, .outro .col > p:not(.dek):not(.fine) {
+  font-family: var(--serif); font-size: 19px; line-height: 1.65; color: #1d1b18; margin-bottom: 20px;
+}
+.next-cue { margin-top: 48px; font-size: 14px; font-weight: 500; color: var(--muted); }
+
+/* ── Gallery rooms (one per recording) ── */
+.room {
+  position: relative;
+  min-height: 100vh; min-height: 100svh;
+  background: var(--room); color: var(--room-ink);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: max(20px, env(safe-area-inset-top)) 0 0;
+  overflow: hidden;
+}
+.room + .room { border-top: 1px solid #1c1a17; }
+
+.room-top { grid-row: 1; padding: 0 24px; display: flex; justify-content: space-between; }
+.room-count { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--room-ink-3); }
+
+.art { grid-row: 2; display: flex; align-items: center; justify-content: center; padding: 20px 20px; min-height: 0; }
+.art img {
+  display: block; max-width: 100%; max-height: 72vh; max-height: 72svh;
+  width: auto; height: auto; object-fit: contain;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  opacity: 0; transition: opacity 0.8s ease;
+}
+.art img.loaded { opacity: 1; }
+
+.card {
+  grid-row: 3;
+  padding: 24px 24px max(32px, env(safe-area-inset-bottom));
+  max-width: 760px; width: 100%; margin: 0 auto;
+  transition: opacity 1.2s ease;
+}
+.card-artist { font-size: 14px; font-weight: 500; color: var(--room-ink-2); margin-bottom: 6px; }
+.card-title { font-size: 34px; font-weight: 700; line-height: 1.08; letter-spacing: -0.3px; margin-bottom: 12px; }
+.card-listen { font-family: var(--serif); font-style: italic; font-size: 19px; line-height: 1.5; color: var(--room-ink-2); max-width: 560px; margin-bottom: 20px; }
+
+.card-row { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-bottom: 18px; }
+.play {
+  display: inline-flex; align-items: center; gap: 12px;
+  min-height: 52px; padding: 0 24px 0 18px; border-radius: 999px;
+  background: var(--room-ink); color: var(--room);
+  font-size: 16px; font-weight: 700;
+  transition: transform 0.15s ease;
+}
+.play:hover { transform: translateY(1px); }
+.play-icon { width: 0; height: 0; border-style: solid; border-width: 8px 0 8px 13px; border-color: transparent transparent transparent currentColor; }
+.room.is-playing .play-icon { width: 13px; height: 16px; border: 0; border-left: 4px solid currentColor; border-right: 4px solid currentColor; }
+.yt-link { font-size: 14px; color: var(--room-ink-3); text-underline-offset: 3px; }
+.yt-link:hover { color: var(--room-ink); }
+
+.card-art { font-size: 13px; line-height: 1.5; color: var(--room-ink-3); max-width: 560px; }
+.card-art a { color: var(--room-ink-2); text-decoration: none; border-bottom: 1px solid rgba(244, 240, 232, 0.25); }
+.card-art a:hover { color: var(--room-ink); }
+.card-art .pairing { display: block; margin-top: 4px; font-family: var(--serif); font-style: italic; font-size: 14px; }
+
+/* Focus mode: while a room's track plays, the words fade away */
+.room.is-focus .card { opacity: 0.08; }
+.room.is-focus .room-top { opacity: 0.2; transition: opacity 1.2s ease; }
+.room.is-focus .art img { max-height: 84vh; max-height: 84svh; transition: opacity 0.8s ease, max-height 1.2s ease; }
+
+/* ── Mini player ── */
+.player {
+  position: fixed; z-index: 60;
+  right: 16px; bottom: max(16px, env(safe-area-inset-bottom));
+  display: flex; align-items: stretch; gap: 0;
+  background: rgba(20, 19, 17, 0.92);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  color: var(--room-ink);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px; overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  max-width: calc(100vw - 32px);
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+.player.is-off { opacity: 0; transform: translateY(24px); pointer-events: none; visibility: hidden; }
+.player-video { width: 240px; aspect-ratio: 16 / 9; background: #000; flex-shrink: 0; }
+.player-video iframe, #yt { width: 100%; height: 100%; display: block; }
+.player-meta { display: flex; flex-direction: column; justify-content: center; gap: 2px; padding: 10px 14px; min-width: 0; width: 220px; }
+.player-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+.player-title { font-size: 14px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.player-artist { font-size: 12px; color: var(--room-ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.player-controls { display: flex; gap: 6px; margin-top: 8px; }
+.player-controls button {
+  font-size: 12px; font-weight: 700; padding: 6px 10px; border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+}
+.player-controls button:hover { background: rgba(255, 255, 255, 0.18); }
+
+/* ── Outro ── */
+.outro { padding: 120px 0 72px; }
+.outro .dek { margin-bottom: 28px; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 16px; margin: 40px 0 24px; padding-top: 24px; border-top: 1px solid var(--rule); }
+.footer-links a { font-size: 14px; font-weight: 500; text-decoration: none; }
+.footer-links a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.noscript { padding: 48px 24px; font-family: var(--serif); font-size: 19px; }
+
+/* ── Mobile ── */
+@media (max-width: 600px) {
+  .hero { padding: 48px 0 72px; }
+  .hero h1 { font-size: 52px; margin-top: 32px; }
+  .dek { font-size: 20px; }
+  .col { padding: 0 20px; }
+  .lesson { padding: 96px 0 72px; }
+  .num { font-size: 52px; }
+  .lesson h2, .outro h2 { font-size: 36px; }
+  .body p, .outro .col > p:not(.dek):not(.fine) { font-size: 18px; }
+  .card { padding-left: 20px; padding-right: 20px; }
+  .card-title { font-size: 28px; }
+  .card-listen { font-size: 17px; }
+  .art { padding: 12px; }
+  .art img { max-height: 58vh; max-height: 58svh; }
+  .room.is-focus .art img { max-height: 78vh; max-height: 78svh; }
+
+  .player { left: 12px; right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); max-width: none; }
+  .player-video { width: 152px; }
+  .player-meta { width: auto; flex: 1; padding: 8px 12px; }
+  .player-controls button { padding: 5px 9px; }
+}
+
+/* ── Leave room for the mini player once it's open (phones) ── */
+@media (max-width: 899px) {
+  body.has-player .room { padding-bottom: 112px; }
+  .art img { max-height: 52vh; max-height: 52svh; }
+}
+
+/* ── Wide screens: painting and card side by side, one screen per room ── */
+@media (min-width: 900px) {
+  .room {
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 400px);
+    grid-template-rows: auto 1fr;
+    height: 100vh; height: 100svh; min-height: 640px;
+    padding-bottom: 32px;
+  }
+  .room-top { grid-column: 1 / -1; }
+  .art { grid-row: 2; grid-column: 1; padding: 24px 32px 24px 48px; }
+  .art img { max-height: calc(100svh - 120px); }
+  .room.is-focus .art img { max-height: calc(100svh - 96px); }
+  .card { grid-row: 2; grid-column: 2; align-self: center; margin: 0; padding: 0 48px 0 8px; }
+  .card-title { font-size: 36px; }
+  .room.is-focus .card { opacity: 0.06; }
+}
