@@ -16,7 +16,7 @@
   var pTitle = playerEl.querySelector('.player-title');
   var pArtist = playerEl.querySelector('.player-artist');
   var pToggle = playerEl.querySelector('.pc-toggle');
-  var progressFill = document.querySelector('.progress-fill');
+  
 
   var tracksById = {};
   var rooms = {};          // id -> section element
@@ -50,8 +50,8 @@
     data.lessons.forEach(function (lesson) {
       var l = tplLesson.content.firstElementChild.cloneNode(true);
       l.id = 'lesson-' + lesson.id;
-      l.querySelector('.num').textContent = String(lesson.id).padStart(2, '0');
-      l.querySelector('.kicker').textContent = lesson.kicker;
+      l.dataset.g = lesson.id;
+      l.querySelector('.gallery').textContent = 'Gallery ' + lesson.id;
       l.querySelector('h2').textContent = lesson.title;
       l.querySelector('.dek').textContent = lesson.dek;
       var body = l.querySelector('.body');
@@ -69,10 +69,12 @@
         s.id = 'track-' + t.id;
         s.dataset.id = t.id;
         s.dataset.index = n;
-        s.querySelector('.room-count').textContent = 'Lesson ' + lesson.id + ' · ' + n + ' of ' + total;
-        s.querySelector('.card-artist').textContent = t.artist + ' · ' + t.year;
-        s.querySelector('.card-title').textContent = t.title;
-        s.querySelector('.card-listen').textContent = t.listen_for;
+        s.dataset.g = lesson.id;
+        s.querySelector('.l-artist').textContent = t.artist;
+        s.querySelector('.l-title cite').textContent = t.title;
+        s.querySelector('.l-year').textContent = t.year;
+        s.querySelector('.l-listen').textContent = t.listen_for;
+        s.querySelector('.l-count').textContent = n + ' of ' + total;
 
         var yl = s.querySelector('.yt-link');
         if (t.youtube_id) {
@@ -80,7 +82,7 @@
         } else {
           yl.remove();
           s.querySelector('.play').disabled = true;
-          s.querySelector('.play-text').textContent = 'Link coming';
+          s.querySelector('.play-text').textContent = 'Recording to come';
         }
 
         var a = t.art || {};
@@ -93,10 +95,18 @@
         });
         img.src = a.image_url || '';
 
-        var artLink = s.querySelector('.card-art a');
-        artLink.href = a.page_url || '#';
-        artLink.textContent = (a.artist ? a.artist + ', ' : '') + (a.title || '') + (a.date ? ' (' + a.date + ')' : '') + (a.museum ? ' — ' + a.museum : '');
-        s.querySelector('.pairing').textContent = a.pairing || '';
+        var artP = s.querySelector('.l-art');
+        artP.textContent = '';
+        artP.appendChild(document.createTextNode((a.artist || '') + ', '));
+        var link = document.createElement('a');
+        link.href = a.page_url || '#';
+        link.target = '_blank';
+        link.rel = 'noopener';
+        var c = document.createElement('cite');
+        c.textContent = a.title || '';
+        link.appendChild(c);
+        artP.appendChild(link);
+        artP.appendChild(document.createTextNode((a.date ? ', ' + a.date : '') + '. ' + (a.museum || '') + '.'));
 
         s.querySelector('.play').addEventListener('click', function () { onPlayClick(t.id); });
         rooms[t.id] = s;
@@ -116,7 +126,7 @@
     var t = last && tracksById[last];
     var btn = document.querySelector('.resume');
     if (!t || !rooms[last] || rooms[last].dataset.index === '1') return;
-    btn.textContent = 'Pick up where you left off: ' + t.title;
+    btn.textContent = 'Continue from ' + t.title;
     btn.href = '#track-' + last;
     btn.hidden = false;
   }
@@ -137,16 +147,6 @@
     }, { threshold: [0, 0.55, 1] });
     Object.keys(rooms).forEach(function (id) { io.observe(rooms[id]); });
 
-    var ticking = false;
-    window.addEventListener('scroll', function () {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(function () {
-        var max = document.documentElement.scrollHeight - window.innerHeight;
-        progressFill.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
-        ticking = false;
-      });
-    }, { passive: true });
   }
 
   // ── focus mode: fade the words while the music plays ───────
@@ -208,6 +208,9 @@
   function start(id) {
     var t = tracksById[id];
     if (!t || !t.youtube_id) return;
+    // Bring the painting back into view so the music starts with the art on screen
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    rooms[id].scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
     if (currentId && rooms[currentId]) setRoomState(currentId, false);
     currentId = id;
     showPlayer(id);
