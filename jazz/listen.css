@@ -1,0 +1,219 @@
+/* ============================================================
+   duncanheidkamp.com/jazz — Ears Wide Open
+   Concept: a museum. Each lesson is a gallery painted its own
+   wall colour; lesson text is set on the wall like exhibition
+   text; each recording hangs as a painting with a wall label.
+   Type: EB Garamond (wall text) + Archivo (labels, controls).
+   ============================================================ */
+
+:root {
+  --stone: #dcdad4;        /* entrance + exit walls */
+  --stone-ink: #22211f;
+  --label: #fbfaf7;        /* wall label card */
+  --label-ink: #1d1c1a;
+  --label-ink-2: #5d5a54;
+  --serif: 'EB Garamond', Garamond, 'Times New Roman', serif;
+  --sans: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Gallery wall colours, one per lesson */
+[data-g="1"] { --wall: #5b2b2a; }  /* oxblood  — Feel the swing */
+[data-g="2"] { --wall: #2c4a52; }  /* slate    — Get inside the sound */
+[data-g="3"] { --wall: #4c5034; }  /* olive    — Hear the architecture */
+[data-g="4"] { --wall: #23344f; }  /* prussian — Read the map */
+[data-g="5"] { --wall: #3d3140; }  /* aubergine — Listen forward */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+
+body {
+  background: var(--stone);
+  color: var(--stone-ink);
+  font-family: var(--serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a { color: inherit; text-underline-offset: 0.16em; text-decoration-thickness: 1px; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+cite { font-style: italic; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+
+/* Wall text column: left-aligned, like exhibition text */
+.wall-text { max-width: 40rem; padding: 0 28px; margin: 0 auto 0 max(28px, 12vw); }
+
+/* ── Entrance ── */
+.entrance { min-height: 100vh; min-height: 100svh; display: flex; align-items: center; padding: 72px 0; }
+.home { font-family: var(--sans); font-size: 0.9375rem; text-decoration: none; color: #6b6861; }
+.home:hover { color: var(--stone-ink); text-decoration: underline; }
+.entrance h1 {
+  font-weight: 400;
+  font-size: clamp(3.5rem, 11vw, 7.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  margin: 2.5rem 0 1.75rem;
+  max-width: 7ch;
+}
+@media (min-width: 1100px) {
+  .entrance .wall-text { max-width: none; }
+  .entrance h1 { font-size: clamp(7rem, 11.5vw, 11rem); max-width: none; white-space: nowrap; margin-left: -0.05em; }
+  .entrance .dek, .entrance .intro, .entrance .actions, .entrance .credit { max-width: 40rem; }
+  .entrance .dek { max-width: 30ch; }
+}
+.dek { font-size: 1.625rem; line-height: 1.35; max-width: 30ch; }
+.intro { font-size: 1.25rem; line-height: 1.55; margin-top: 1.5rem; max-width: 34em; color: #3c3a36; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 2.5rem 0 2.75rem; }
+.btn {
+  display: inline-flex; align-items: center; min-height: 48px; padding: 0 20px;
+  font-family: var(--sans); font-size: 1rem; font-weight: 500;
+  text-decoration: none; border-radius: 3px;
+}
+.btn-solid { background: var(--stone-ink); color: var(--stone); }
+.btn-solid:hover { background: #000; }
+.btn-line { border: 1px solid var(--stone-ink); }
+.btn-line:hover { background: rgba(0, 0, 0, 0.05); }
+
+.credit { font-family: var(--sans); font-size: 0.8125rem; line-height: 1.6; color: #6b6861; max-width: 46em; }
+.credit cite { font-style: italic; }
+
+/* ── Gallery introductions (one per lesson) ── */
+.lesson {
+  background: var(--wall);
+  color: #efece5;
+  min-height: 92vh; min-height: 92svh;
+  display: flex; align-items: center;
+  padding: 120px 0 100px;
+}
+.gallery { font-family: var(--sans); font-size: 0.9375rem; color: rgba(239, 236, 229, 0.7); margin-bottom: 1rem; }
+.lesson h2, .exit h2 {
+  font-weight: 400;
+  font-size: clamp(2.75rem, 7vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  margin-bottom: 1.5rem;
+}
+.lesson .dek { margin-bottom: 2.25rem; }
+.body p, .exit .wall-text > p:not(.dek):not(.credit) {
+  font-size: 1.25rem; line-height: 1.6; max-width: 34em; margin-bottom: 1.1rem;
+}
+
+/* ── Rooms: one painting + wall label per recording ── */
+.room {
+  background: var(--wall);
+  min-height: 100vh; min-height: 100svh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+  padding: 48px 20px 40px;
+  gap: 28px;
+}
+.art { display: flex; align-items: center; justify-content: center; min-height: 0; }
+.art img {
+  display: block; max-width: 100%; max-height: 60vh; max-height: 60svh;
+  width: auto; height: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25), 0 18px 40px rgba(0, 0, 0, 0.3);
+  opacity: 0; transition: opacity 0.6s ease, max-height 1s ease;
+}
+.art img.loaded { opacity: 1; }
+
+.label {
+  align-self: start;
+  justify-self: center;
+  width: 100%; max-width: 22rem;
+  background: var(--label);
+  color: var(--label-ink);
+  font-family: var(--sans);
+  padding: 18px 20px 16px;
+  border-radius: 1px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+  transition: opacity 1.2s ease;
+}
+.l-artist { font-size: 1rem; font-weight: 600; line-height: 1.3; }
+.l-title { font-size: 1rem; line-height: 1.35; margin-top: 2px; }
+.l-title cite { font-family: var(--serif); font-size: 1.1875rem; }
+.l-listen { font-family: var(--serif); font-size: 1.125rem; line-height: 1.45; margin-top: 12px; }
+
+.l-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
+.play {
+  display: inline-flex; align-items: center; gap: 10px;
+  min-height: 44px; padding: 0 16px 0 14px;
+  background: var(--label-ink); color: var(--label);
+  font-size: 0.9375rem; font-weight: 500; border-radius: 3px;
+}
+.play:hover { background: #000; }
+.play:disabled { background: #cfccc5; color: var(--label-ink-2); cursor: default; }
+.play-icon { width: 0; height: 0; border-style: solid; border-width: 6px 0 6px 10px; border-color: transparent transparent transparent currentColor; }
+.room.is-playing .play-icon { width: 10px; height: 12px; border: 0; border-left: 3px solid currentColor; border-right: 3px solid currentColor; }
+.yt-link { font-size: 0.875rem; color: var(--label-ink-2); }
+.yt-link:hover { color: var(--label-ink); }
+
+.l-art { font-size: 0.8125rem; line-height: 1.5; color: var(--label-ink-2); margin-top: 16px; padding-top: 12px; border-top: 1px solid #e6e3dc; }
+.l-art a { color: var(--label-ink-2); text-decoration: none; }
+.l-art a:hover { color: var(--label-ink); text-decoration: underline; }
+.l-art cite { font-family: var(--serif); font-size: 0.9375rem; }
+.l-count { font-size: 0.75rem; color: #9a968e; margin-top: 8px; }
+
+/* While a room's recording plays, the label steps back */
+.room.is-focus .label { opacity: 0.12; }
+.room.is-focus .art img { max-height: 76vh; max-height: 76svh; }
+
+/* ── Mini player ── */
+.player {
+  position: fixed; z-index: 60;
+  right: 16px; bottom: max(16px, env(safe-area-inset-bottom));
+  display: flex;
+  background: var(--label); color: var(--label-ink);
+  font-family: var(--sans);
+  border-radius: 2px; overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 10px 30px rgba(0, 0, 0, 0.28);
+  max-width: calc(100vw - 32px);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.player.is-off { opacity: 0; transform: translateY(16px); pointer-events: none; visibility: hidden; }
+.player-video { width: 240px; aspect-ratio: 16 / 9; background: #000; flex-shrink: 0; }
+.player-video iframe, #yt { width: 100%; height: 100%; display: block; }
+.player-meta { display: flex; flex-direction: column; justify-content: center; gap: 1px; padding: 10px 14px; width: 230px; min-width: 0; }
+.player-title { font-family: var(--serif); font-style: italic; font-size: 1.0625rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.player-artist { font-size: 0.8125rem; color: var(--label-ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.player-controls { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 8px; }
+.player-controls button { font-size: 0.8125rem; font-weight: 500; text-decoration: underline; text-underline-offset: 0.2em; text-decoration-color: #c9c5bd; padding: 2px 0; }
+.player-controls button:hover { text-decoration-color: currentColor; }
+
+/* ── Exit ── */
+.exit { padding: 140px 0 80px; }
+.exit .dek { margin-bottom: 2rem; }
+.exit-links { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 2.75rem 0 1.5rem; font-family: var(--sans); font-size: 0.9375rem; }
+
+.noscript { padding: 60px 28px; font-size: 1.25rem; }
+
+/* ── Phones ── */
+@media (max-width: 899px) {
+  .wall-text { margin: 0 auto; padding: 0 22px; }
+  .dek { font-size: 1.4375rem; }
+  .intro, .body p, .exit .wall-text > p:not(.dek):not(.credit) { font-size: 1.1875rem; }
+  .lesson { padding: 96px 0 80px; }
+  .room { padding: 36px 16px 32px; gap: 20px; }
+  .label { max-width: none; }
+  body.has-player .room { padding-bottom: 116px; }
+
+  .player { left: 12px; right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); max-width: none; }
+  .player-video { width: 150px; }
+  .player-meta { width: auto; flex: 1; padding: 8px 12px; }
+}
+
+/* ── Wide screens: painting hung centre, label beside it at the right ── */
+@media (min-width: 900px) {
+  .room {
+    grid-template-columns: minmax(0, 1fr) 20rem;
+    grid-template-rows: 1fr;
+    height: 100vh; height: 100svh; min-height: 640px;
+    padding: 56px 56px 56px 64px;
+    gap: 48px;
+    align-items: center;
+  }
+  .art img { max-height: calc(100svh - 112px); }
+  .room.is-focus .art img { max-height: calc(100svh - 80px); }
+  .label { align-self: end; justify-self: start; margin-bottom: 12vh; }
+}
