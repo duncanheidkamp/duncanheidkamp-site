@@ -12,7 +12,7 @@
 import { RACES, CONFIDENCES, confidenceLabel, sideLabel, HOUSE_TOTAL, HOUSE_MAJORITY, HOUSE_R_MIN, HOUSE_R_MAX } from './races.js';
 import { NATE } from './nate.js';
 import { SHAPES } from './shapes.js';
-import { consensus, leaderboard, scoreNate, biggestUpset } from './scoring.js';
+import { consensus, leaderboard, scoreNate, biggestUpset, impliedSenate } from './scoring.js';
 
 const API = '/api/midterms';
 const SESSION_KEY = 'midterms.session';
@@ -400,16 +400,35 @@ function gridHtml(players, wins) {
       ${anyCalled ? `<td class="res">${S.server.houseDFinal != null ? `<b>${S.server.houseDFinal}</b>` : '<span class="pending">Pending</span>'}</td>` : ''}
     </tr>`;
 
+  // Implied 2027 Senate: today's split with each column's Senate picks applied.
+  const senChip = (s, who) => `<button class="chip sen ${s.control}" data-act="senate" data-who="${who}"
+    aria-label="Implied Senate ${s.D} D, ${s.R} R">${s.D}–${s.R}</button>`;
+  const nateSen = impliedSenate((id) => (NATE.pDem[id] == null ? null : NATE.pDem[id] >= 0.5 ? 'D' : 'R'));
+  const playerSen = players.map((p) => impliedSenate((id) => p.picks[id]?.side));
+  const avgD = playerSen.length ? playerSen.reduce((a, s) => a + s.D, 0) / playerSen.length : null;
+  // Result column: only once every Senate race in the pick'em is called.
+  const senRaces = RACES.filter((r) => r.held);
+  const actualSen = senRaces.every((r) => wins[r.id]) ? impliedSenate((id) => wins[id]) : null;
+  const senate = `
+    <tr class="senate-row">
+      <th class="lab" scope="row"><b style="font-size:12px">Senate</b><span>2027 D–R</span></th>
+      <td class="nate">${senChip(nateSen, 'nate')}</td>
+      ${players.map((p, i) => `<td class="pc ${p.id === myId ? 'me' : ''}">${senChip(playerSen[i], p.id)}</td>`).join('')}
+      <td class="grp"><span class="pending">${avgD == null ? '—' : `avg ${avgD.toFixed(1)} D`}</span></td>
+      ${anyCalled ? `<td class="res">${actualSen ? `<span class="won ${actualSen.control}">${actualSen.D}–${actualSen.R}</span>` : '<span class="pending">Pending</span>'}</td>` : ''}
+    </tr>`;
+
   return `
     <div class="grid-wrap">
       <table class="grid">
         <thead>${head}</thead>
         <tbody>${rows}</tbody>
-        <tfoot>${foot}</tfoot>
+        <tfoot>${foot}${senate}</tfoot>
       </table>
     </div>
     <div class="detail" id="detail" aria-live="polite">${S.detail || 'Tap any square to see the pick.'}</div>
-    <p class="small" style="margin-top:-4px">Nate = Silver Bulletin win probability for the favorite, as of ${esc(NATE.asOf)}. Group tally excludes Nate. Highlighted rows are an even split.</p>`;
+    <p class="small" style="margin-top:-4px">Nate = Silver Bulletin win probability for the favorite, as of ${esc(NATE.asOf)}. Group tally excludes Nate. Highlighted rows are an even split.
+      Senate = the 2027 split each column's Senate picks imply, starting from today's 47 D – 53 R; seats not in the pick'em stay put, Bodnar (I) counts with D, and 50–50 is R control (VP Vance breaks ties).</p>`;
 }
 
 /** The Wordle-style block for the group chat. */
@@ -553,6 +572,7 @@ app.addEventListener('click', async (ev) => {
   }
   if (act === 'copy') copyPicks();
   if (act === 'cell') showCell(t.dataset.who, t.dataset.race, t);
+  if (act === 'senate') showSenate(t.dataset.who, t);
 });
 
 // Slider: update the readout live without a full re-render (keeps the drag smooth).
@@ -645,6 +665,26 @@ function showCell(who, raceId, el) {
     const name = pick.side === 'D' ? race.d : race.r;
     S.detail = `<b>${esc(p.name)}</b> · ${race.title}: ${esc(name)} (${sideLabel(race, pick.side)}), ${confidenceLabel(pick.confidence)}`;
   }
+  document.getElementById('detail').innerHTML = S.detail;
+}
+
+/** Tap on a Senate-row cell: the split, who controls, and which seats flip. */
+function showSenate(who, el) {
+  app.querySelectorAll('.chip.picked').forEach((c) => c.classList.remove('picked'));
+  el.classList.add('picked');
+  let name, s;
+  if (who === 'nate') {
+    name = 'Nate';
+    s = impliedSenate((id) => (NATE.pDem[id] == null ? null : NATE.pDem[id] >= 0.5 ? 'D' : 'R'));
+  } else {
+    const p = gridPlayers().find((x) => x.id === who);
+    name = esc(p.name);
+    s = impliedSenate((id) => p.picks[id]?.side);
+  }
+  const flips = s.flips.length
+    ? 'Flips: ' + s.flips.map((f) => `${f.race.st} → ${sideLabel(f.race, f.to)}`).join(', ')
+    : 'No seats flip';
+  S.detail = `<b>${name}</b> · 2027 Senate ${s.D} D – ${s.R} R, <b>${s.control === 'D' ? 'Democratic' : 'Republican'} control</b>. ${flips}.`;
   document.getElementById('detail').innerHTML = S.detail;
 }
 

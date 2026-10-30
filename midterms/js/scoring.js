@@ -5,7 +5,7 @@
 // browser AND in node for unit tests (midterms/test/scoring.test.js).
 // ============================================================
 
-import { RACES, HOUSE_TOTAL } from './races.js';
+import { RACES, HOUSE_TOTAL, SENATE_NOW, SENATE_MAJORITY } from './races.js';
 
 /**
  * Points for one resolved race.
@@ -132,4 +132,25 @@ export function biggestUpset(players, winners) {
 /** House slider readout helpers (stored value is Democratic seats). */
 export function houseSplit(houseD) {
   return { d: houseD, r: HOUSE_TOTAL - houseD };
+}
+
+/**
+ * The 2027 Senate a set of picks implies. Starts from today's split and
+ * flips each pick'em Senate seat to whichever side was picked. A race with
+ * no pick (e.g. added after someone entered) is assumed to stay put.
+ * Montana's non-R slot (Bodnar, I) counts with Democrats, as FLIPR treats him.
+ * @param {(raceId:string) => ('R'|'D'|null|undefined)} sideFor
+ * @returns {{D:number, R:number, control:'D'|'R', flips:{race:object, to:'R'|'D'}[]}}
+ */
+export function impliedSenate(sideFor) {
+  let D = SENATE_NOW.D, R = SENATE_NOW.R;
+  const flips = [];
+  for (const race of RACES) {
+    if (!race.held) continue;
+    const side = sideFor(race.id) || race.held;
+    if (side === race.held) continue;
+    if (side === 'D') { D++; R--; } else { R++; D--; }
+    flips.push({ race, to: side });
+  }
+  return { D, R, control: D >= SENATE_MAJORITY ? 'D' : 'R', flips };
 }

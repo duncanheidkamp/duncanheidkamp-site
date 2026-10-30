@@ -21,23 +21,25 @@
  * @property {string} r       Republican nominee
  * @property {string} d       Democratic nominee — or, when `dParty` is set, the
  *                            main non-Republican candidate (e.g. an independent)
+ * @property {'R'|'D'} [held] Senate only: party holding the seat today (for
+ *                            the implied 2027 Senate row in the grid)
  * @property {string} [dParty] letter to show for the `d` slot (default 'D').
  *                            Picks for that slot are still stored as side 'D'.
  */
 
 /** @type {Race[]} */
 export const RACES = [
-  { id: 'ak-sen', st: 'AK', state: 'Alaska',   office: 'Sen', title: 'Alaska Senate',         note: 'Incumbent: Sullivan · slow count',     r: 'Dan Sullivan',      d: 'Mary Peltola' },
+  { id: 'ak-sen', st: 'AK', state: 'Alaska',   office: 'Sen', title: 'Alaska Senate',         note: 'Incumbent: Sullivan · slow count',     r: 'Dan Sullivan',      d: 'Mary Peltola' , held: 'R' },
   { id: 'ga-gov', st: 'GA', state: 'Georgia',  office: 'Gov', title: 'Georgia Governor',      note: 'Open seat',                            r: 'Rick Jackson',      d: 'Keisha Lance Bottoms' },
-  { id: 'ia-sen', st: 'IA', state: 'Iowa',     office: 'Sen', title: 'Iowa Senate',           note: 'Open seat',                            r: 'Ashley Hinson',     d: 'Josh Turek' },
+  { id: 'ia-sen', st: 'IA', state: 'Iowa',     office: 'Sen', title: 'Iowa Senate',           note: 'Open seat',                            r: 'Ashley Hinson',     d: 'Josh Turek' , held: 'R' },
   { id: 'ia-gov', st: 'IA', state: 'Iowa',     office: 'Gov', title: 'Iowa Governor',         note: 'Open seat',                            r: 'Zach Lahn',         d: 'Rob Sand' },
-  { id: 'ks-sen', st: 'KS', state: 'Kansas',   office: 'Sen', title: 'Kansas Senate',         note: 'Incumbent: Marshall',                  r: 'Roger Marshall',    d: 'Adam Hamilton' },
-  { id: 'me-sen', st: 'ME', state: 'Maine',    office: 'Sen', title: 'Maine Senate',          note: 'Incumbent: Collins · ranked-choice',   r: 'Susan Collins',     d: 'Troy Jackson' },
-  { id: 'mi-sen', st: 'MI', state: 'Michigan', office: 'Sen', title: 'Michigan Senate',       note: 'Open seat',                            r: 'Mike Rogers',       d: 'Abdul El-Sayed' },
-  { id: 'mt-sen', st: 'MT', state: 'Montana',  office: 'Sen', title: 'Montana Senate',        note: 'Independent vs. R · a Democrat is also on the ballot', r: 'Kurt Alme',         d: 'Seth Bodnar', dParty: 'I' },
-  { id: 'oh-sen', st: 'OH', state: 'Ohio',     office: 'Sen', title: 'Ohio Senate (special)', note: 'Incumbent: Husted (appointed)', r: 'Jon Husted',        d: 'Sherrod Brown' },
+  { id: 'ks-sen', st: 'KS', state: 'Kansas',   office: 'Sen', title: 'Kansas Senate',         note: 'Incumbent: Marshall',                  r: 'Roger Marshall',    d: 'Adam Hamilton' , held: 'R' },
+  { id: 'me-sen', st: 'ME', state: 'Maine',    office: 'Sen', title: 'Maine Senate',          note: 'Incumbent: Collins · ranked-choice',   r: 'Susan Collins',     d: 'Troy Jackson' , held: 'R' },
+  { id: 'mi-sen', st: 'MI', state: 'Michigan', office: 'Sen', title: 'Michigan Senate',       note: 'Open seat',                            r: 'Mike Rogers',       d: 'Abdul El-Sayed' , held: 'D' },
+  { id: 'mt-sen', st: 'MT', state: 'Montana',  office: 'Sen', title: 'Montana Senate',        note: 'Independent vs. R · a Democrat is also on the ballot', r: 'Kurt Alme',         d: 'Seth Bodnar', dParty: 'I' , held: 'R' },
+  { id: 'oh-sen', st: 'OH', state: 'Ohio',     office: 'Sen', title: 'Ohio Senate (special)', note: 'Incumbent: Husted (appointed)', r: 'Jon Husted',        d: 'Sherrod Brown' , held: 'R' },
   { id: 'oh-gov', st: 'OH', state: 'Ohio',     office: 'Gov', title: 'Ohio Governor',         note: 'Open seat',                            r: 'Vivek Ramaswamy',   d: 'Amy Acton' },
-  { id: 'tx-sen', st: 'TX', state: 'Texas',    office: 'Sen', title: 'Texas Senate',          note: 'Open seat · Cornyn lost the primary',  r: 'Ken Paxton',        d: 'James Talarico' },
+  { id: 'tx-sen', st: 'TX', state: 'Texas',    office: 'Sen', title: 'Texas Senate',          note: 'Open seat · Cornyn lost the primary',  r: 'Ken Paxton',        d: 'James Talarico' , held: 'R' },
   { id: 'tx-gov', st: 'TX', state: 'Texas',    office: 'Gov', title: 'Texas Governor',        note: 'Incumbent: Abbott',                    r: 'Greg Abbott',       d: 'Gina Hinojosa' },
 ];
 
@@ -76,3 +78,9 @@ export const HOUSE_R_MIN = 180;
 export const HOUSE_R_MAX = 255;
 
 export const MAX_PLAYERS = 15;
+
+// Senate today (2025–27 Congress): 53 R, 47 D — the 47 includes King and
+// Sanders, who caucus with Democrats. The grid's "Senate" row starts here and
+// applies each player's Senate picks; seats not in the pick'em stay put.
+export const SENATE_NOW = { D: 47, R: 53 };
+export const SENATE_MAJORITY = 51; // 50–50 goes to R: VP Vance breaks ties

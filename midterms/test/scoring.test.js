@@ -1,7 +1,7 @@
 // Run with:  npm test   (uses node's built-in test runner, no deps)
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { points, pAssignedTo, scorePlayer, scoreNate, leaderboard, biggestUpset, consensus } from '../js/scoring.js';
+import { points, pAssignedTo, scorePlayer, scoreNate, leaderboard, biggestUpset, consensus, impliedSenate } from '../js/scoring.js';
 
 test('points table from the spec', () => {
   assert.equal(points(0.9), 99);   // Safe right
@@ -60,4 +60,21 @@ test('consensus and biggest upset', () => {
   assert.equal(up.race.id, 'tx-sen');
   assert.deepEqual(up.rightNames, ['D']);
   assert.equal(biggestUpset(players, { 'ks-sen': 'R' }), null);
+});
+
+test('implied Senate: start 47 D – 53 R, flip picked seats', () => {
+  // Duncan's picks: D in AK, ME, OH, TX (flips), D holds MI, R holds IA, KS, MT.
+  const picks = { 'ak-sen': 'D', 'me-sen': 'D', 'oh-sen': 'D', 'tx-sen': 'D', 'mi-sen': 'D', 'ia-sen': 'R', 'ks-sen': 'R', 'mt-sen': 'R' };
+  const s = impliedSenate((id) => picks[id]);
+  assert.deepEqual({ D: s.D, R: s.R, control: s.control }, { D: 51, R: 49, control: 'D' });
+  assert.deepEqual(s.flips.map((f) => f.race.id).sort(), ['ak-sen', 'me-sen', 'oh-sen', 'tx-sen']);
+});
+
+test('implied Senate: 50–50 is R control; missing picks hold; R can flip MI', () => {
+  const tie = impliedSenate((id) => ({ 'ak-sen': 'D', 'me-sen': 'D', 'oh-sen': 'D' })[id]);
+  assert.deepEqual({ D: tie.D, R: tie.R, control: tie.control }, { D: 50, R: 50, control: 'R' });
+  const none = impliedSenate(() => undefined);
+  assert.deepEqual({ D: none.D, R: none.R }, { D: 47, R: 53 });
+  const miFlip = impliedSenate((id) => (id === 'mi-sen' ? 'R' : undefined));
+  assert.deepEqual({ D: miFlip.D, R: miFlip.R }, { D: 46, R: 54 });
 });
