@@ -41,7 +41,7 @@ The homepage alone still works by opening `index.html` directly.
 
 ## 2026 Midterms Pick'em (`/midterms`)
 
-Friends pick a winner and a confidence (Lean 60% / Likely 75% / Safe 90%) in 11 races, plus a House-seat tiebreaker. Submitting unlocks a grid of everyone's picks. Picks lock **Tue Nov 3, 2026 at 5:00 PM CT**, and the server enforces it.
+Friends pick a winner and a confidence (Lean 60% / Likely 75% / Safe 90%) in 12 races (11 two-party races plus Montana, an independent vs. a Republican), plus a House-seat tiebreaker. Submitting unlocks a grid of everyone's picks. Picks lock **Tue Nov 3, 2026 at 5:00 PM CT**, and the server enforces it.
 
 | Path | What it is |
 |---|---|

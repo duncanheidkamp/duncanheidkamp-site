@@ -1,5 +1,5 @@
 // ============================================================
-// races.js — the 11 races in the pick'em, in display order.
+// races.js — the races in the pick'em, in display order.
 //
 // This file is shared: the browser imports it directly, and the
 // API (api/midterms/[action].js) imports it too, so the server
@@ -19,7 +19,10 @@
  * @property {string} title   card heading
  * @property {string} note    small gray line under the heading
  * @property {string} r       Republican nominee
- * @property {string} d       Democratic nominee
+ * @property {string} d       Democratic nominee — or, when `dParty` is set, the
+ *                            main non-Republican candidate (e.g. an independent)
+ * @property {string} [dParty] letter to show for the `d` slot (default 'D').
+ *                            Picks for that slot are still stored as side 'D'.
  */
 
 /** @type {Race[]} */
@@ -31,6 +34,7 @@ export const RACES = [
   { id: 'ks-sen', st: 'KS', state: 'Kansas',   office: 'Sen', title: 'Kansas Senate',         note: 'Incumbent: Marshall',                  r: 'Roger Marshall',    d: 'Adam Hamilton' },
   { id: 'me-sen', st: 'ME', state: 'Maine',    office: 'Sen', title: 'Maine Senate',          note: 'Incumbent: Collins · ranked-choice',   r: 'Susan Collins',     d: 'Troy Jackson' },
   { id: 'mi-sen', st: 'MI', state: 'Michigan', office: 'Sen', title: 'Michigan Senate',       note: 'Open seat',                            r: 'Mike Rogers',       d: 'Abdul El-Sayed' },
+  { id: 'mt-sen', st: 'MT', state: 'Montana',  office: 'Sen', title: 'Montana Senate',        note: 'Independent vs. R · a Democrat is also on the ballot', r: 'Kurt Alme',         d: 'Seth Bodnar', dParty: 'I' },
   { id: 'oh-sen', st: 'OH', state: 'Ohio',     office: 'Sen', title: 'Ohio Senate (special)', note: 'Incumbent: Husted (appointed)', r: 'Jon Husted',        d: 'Sherrod Brown' },
   { id: 'oh-gov', st: 'OH', state: 'Ohio',     office: 'Gov', title: 'Ohio Governor',         note: 'Open seat',                            r: 'Vivek Ramaswamy',   d: 'Amy Acton' },
   { id: 'tx-sen', st: 'TX', state: 'Texas',    office: 'Sen', title: 'Texas Senate',          note: 'Open seat · Cornyn lost the primary',  r: 'Ken Paxton',        d: 'James Talarico' },
@@ -38,6 +42,14 @@ export const RACES = [
 ];
 
 export const RACE_IDS = RACES.map((r) => r.id);
+
+/**
+ * The letter to show for a side in a given race. Usually 'R'/'D', but a
+ * race can relabel its non-Republican slot (Montana: 'I' for Bodnar).
+ */
+export function sideLabel(race, side) {
+  return side === 'D' ? race.dParty || 'D' : 'R';
+}
 
 // Confidence levels. The DB stores the number; the UI shows the word.
 export const CONFIDENCES = [

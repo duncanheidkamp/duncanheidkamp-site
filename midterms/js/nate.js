@@ -2,7 +2,8 @@
 // nate.js — Nate Silver / Silver Bulletin base case.
 //
 // Hand-entered from the Silver Bulletin forecast. Each number is the
-// DEMOCRAT's win probability (0–1). To update on Tuesday afternoon:
+// DEMOCRAT's win probability (0–1) — or, for a race with `dParty` set in
+// races.js, the win probability of that non-Republican candidate. To update on Tuesday afternoon:
 //   1. Change the numbers below (and `asOf`).
 //   2. Commit + push — Vercel redeploys in ~30 seconds.
 // Set a race to null if there's no model number; the grid shows "—".
@@ -14,6 +15,7 @@ export const NATE = {
     'tx-sen': 0.737,
     'ak-sen': 0.595,
     'mi-sen': 0.832,
+    'mt-sen': 0.066, // Montana: chance for independent Seth Bodnar (the non-R slot)
     'me-sen': 0.704,
     'oh-sen': 0.712,
     'ks-sen': 0.612,

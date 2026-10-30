@@ -5,7 +5,7 @@
 // doesn't ask again; closing the tab forgets it.
 // ============================================================
 
-import { RACES } from './races.js';
+import { RACES, sideLabel } from './races.js';
 
 const root = document.getElementById('admin');
 const KEY = 'midterms.admin';
@@ -45,15 +45,16 @@ function renderLogin(error = '') {
 }
 
 function render() {
-  const OPTS = [['pending', 'Pending'], ['R', 'R won'], ['D', 'D won'], ['too_close', 'Too close']];
   const called = RACES.filter((r) => results[r.id] === 'R' || results[r.id] === 'D').length;
   root.innerHTML = `
     <p class="small"><b>${called} of ${RACES.length}</b> races called. ${esc(msg)}</p>
     ${RACES.map((r) => {
       const cur = results[r.id] || 'pending';
+      // The 'D' slot is labeled per race (Montana shows 'I won').
+      const OPTS = [['pending', 'Pending'], ['R', 'R won'], ['D', `${sideLabel(r, 'D')} won`], ['too_close', 'Too close']];
       return `
         <div class="admin-race">
-          <div><b>${esc(r.title)}</b><br><span>R ${esc(r.r)} · D ${esc(r.d)}</span></div>
+          <div><b>${esc(r.title)}</b><br><span>R ${esc(r.r)} · ${sideLabel(r, 'D')} ${esc(r.d)}</span></div>
           <div class="seg">${OPTS.map(([v, label]) => `<button type="button" class="${v} ${cur === v ? 'sel' : ''}" data-race="${r.id}" data-v="${v}">${label}</button>`).join('')}</div>
         </div>`;
     }).join('')}

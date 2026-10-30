@@ -9,7 +9,7 @@
 // view from S with template strings. Simple and plenty fast for 11 rows.
 // ============================================================
 
-import { RACES, CONFIDENCES, confidenceLabel, HOUSE_TOTAL, HOUSE_MAJORITY, HOUSE_R_MIN, HOUSE_R_MAX } from './races.js';
+import { RACES, CONFIDENCES, confidenceLabel, sideLabel, HOUSE_TOTAL, HOUSE_MAJORITY, HOUSE_R_MIN, HOUSE_R_MAX } from './races.js';
 import { NATE } from './nate.js';
 import { SHAPES } from './shapes.js';
 import { consensus, leaderboard, scoreNate, biggestUpset } from './scoring.js';
@@ -164,7 +164,7 @@ function raceCard(race) {
     const sel = p.side === side;
     return `<button type="button" class="cand ${side} ${sel ? 'sel' : ''}" data-act="side" data-race="${race.id}" data-side="${side}"
       aria-pressed="${sel}" ${locked ? 'disabled' : ''}>
-      <span class="tag">${side}</span><span class="nm">${esc(name)}</span></button>`;
+      <span class="tag">${sideLabel(race, side)}</span><span class="nm">${esc(name)}</span></button>`;
   };
   const confs = CONFIDENCES.map((c) => {
     const sel = p.side && p.confidence === c.value;
@@ -321,7 +321,7 @@ function leaderboardHtml(players, wins) {
     <div class="upset">
       <span class="k">Biggest upset</span>
       <span class="r">${esc(up.race.title)}</span>
-      <span class="t">The group went ${Math.max(up.nD, up.nR)}–${Math.min(up.nD, up.nR)} for ${up.majority}. ${up.winner} won.
+      <span class="t">The group went ${Math.max(up.nD, up.nR)}–${Math.min(up.nD, up.nR)} for ${sideLabel(up.race, up.majority)}. ${sideLabel(up.race, up.winner)} won.
         ${up.rightNames.length ? `${up.rightNames.map(esc).join(', ')} called it.` : 'Nobody called it.'}</span>
     </div>` : '';
 
@@ -372,12 +372,12 @@ function gridHtml(players, wins) {
       const dissent = !win && majority && pick.side !== majority;
       return `<td class="pc ${p.id === myId ? 'me' : ''}">
         <button class="chip ${pick.side}${level(pick.confidence)} ${win && !hit ? 'missed' : ''}" data-act="cell" data-who="${p.id}" data-race="${race.id}"
-          aria-label="${esc(p.name)}: ${pick.side} ${confidenceLabel(pick.confidence)}">${pick.side}${dissent ? '<span class="dissent"></span>' : ''}${hit ? `<span class="hit">${CHECK}</span>` : ''}</button></td>`;
+          aria-label="${esc(p.name)}: ${sideLabel(race, pick.side)} ${confidenceLabel(pick.confidence)}">${sideLabel(race, pick.side)}${dissent ? '<span class="dissent"></span>' : ''}${hit ? `<span class="hit">${CHECK}</span>` : ''}</button></td>`;
     }).join('');
 
     const total = nD + nR;
-    const grp = total === 0 ? '—' : majority ? `${Math.max(nD, nR)}–${Math.min(nD, nR)} ${majority}` : `${nD}–${nR} split`;
-    const res = !anyCalled ? '' : `<td class="res">${win ? `<span class="won ${win}">${win} won</span>` : `<span class="pending">${status === 'too_close' ? 'Too close' : 'Pending'}</span>`}</td>`;
+    const grp = total === 0 ? '—' : majority ? `${Math.max(nD, nR)}–${Math.min(nD, nR)} ${sideLabel(race, majority)}` : `${nD}–${nR} split`;
+    const res = !anyCalled ? '' : `<td class="res">${win ? `<span class="won ${win}">${sideLabel(race, win)} won</span>` : `<span class="pending">${status === 'too_close' ? 'Too close' : 'Pending'}</span>`}</td>`;
 
     return `
       <tr class="${split ? 'split' : ''}">
@@ -638,12 +638,12 @@ function showCell(who, raceId, el) {
   if (who === 'nate') {
     const n = nateCell(raceId);
     const name = n.side === 'D' ? race.d : race.r;
-    S.detail = `<b>Nate</b> · ${race.title}: ${esc(name)} (${n.side}) at ${(n.fav * 100).toFixed(1)}%`;
+    S.detail = `<b>Nate</b> · ${race.title}: ${esc(name)} (${sideLabel(race, n.side)}) at ${(n.fav * 100).toFixed(1)}%`;
   } else {
     const p = gridPlayers().find((x) => x.id === who);
     const pick = p.picks[raceId];
     const name = pick.side === 'D' ? race.d : race.r;
-    S.detail = `<b>${esc(p.name)}</b> · ${race.title}: ${esc(name)} (${pick.side}), ${confidenceLabel(pick.confidence)}`;
+    S.detail = `<b>${esc(p.name)}</b> · ${race.title}: ${esc(name)} (${sideLabel(race, pick.side)}), ${confidenceLabel(pick.confidence)}`;
   }
   document.getElementById('detail').innerHTML = S.detail;
 }

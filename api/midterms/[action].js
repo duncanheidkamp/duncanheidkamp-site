@@ -61,7 +61,7 @@ function cleanPin(raw) {
   return pin;
 }
 
-/** Validate a full entry: all 11 races + the House tiebreaker. */
+/** Validate a full entry: every race + the House tiebreaker. */
 function cleanEntry(body) {
   const picks = body.picks || {};
   const rows = [];
