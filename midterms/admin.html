@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Pick'em Admin</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=Zilla+Slab:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/midterms/css/midterms.css" />
+  <style>
+    /* Admin-only bits: a 4-way segmented control per race. */
+    .seg { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--control); border-radius: 8px; overflow: hidden; }
+    .seg button { height: 44px; border: none; border-left: 1px solid var(--control); background: var(--card); font-size: 12px; font-weight: 700; }
+    .seg button:first-child { border-left: none; }
+    .seg button.sel { background: var(--ink); color: var(--bg); }
+    .seg button.sel.R { background: var(--r); color: #fff; }
+    .seg button.sel.D { background: var(--d); color: #fff; }
+    .admin-race { display: flex; flex-direction: column; gap: 8px; padding: 12px 0; border-bottom: 1px solid var(--line-soft); }
+    .admin-race b { font-size: 15px; }
+    .admin-race span { font-size: 12px; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="top">
+      <div class="top-row"><a class="site" href="/midterms#grid">← Pick'em</a></div>
+      <div>
+        <div class="kicker">Election night</div>
+        <h1 class="sm">Admin</h1>
+        <p class="lede sm">Mark races as they're called. Changes save immediately and show up on everyone's leaderboard within a minute.</p>
+      </div>
+    </header>
+    <main id="admin"></main>
+  </div>
+  <script type="module" src="/midterms/js/admin.js"></script>
+</body>
+</html>
