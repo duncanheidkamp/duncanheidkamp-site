@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Election night</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&amp;family=Zilla+Slab:wght@600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#121212}a:hover{color:#5F5F5F}
+</style>
+</helmet>
+<div style="width: 390px; height: 1560px; box-sizing: border-box; background: #FFFFFF; font-family: 'Libre Franklin', system-ui, sans-serif; color: #121212; display: flex; flex-direction: column">
+<header style="padding: 18px 16px 16px; border-bottom: 1px solid #E2E2E2; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; justify-content: space-between; align-items: center">
+<a href="#" style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none">duncanheidkamp.com</a>
+<span style="font-size: 13px; font-weight: 600; padding: 6px 12px; border: 1px solid #D6D6D6; border-radius: 999px">Duncan</span>
+</div>
+<div>
+<div style="display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #5F5F5F"><span style="width: 8px; height: 8px; border-radius: 50%; background: #C0392B"></span>Live · Election night</div>
+<h1 style="margin: 4px 0 0; font-family: 'Zilla Slab', serif; font-size: 36px; line-height: 1.05; font-weight: 700">Leaderboard</h1>
+<p style="margin: 8px 0 0; font-size: 14px; color: #3D3D3D">Updated 10:42 PM CT · 8 of 11 races called</p>
+<p style="margin: 8px 0 0; font-size: 12px; color: #6B6B6B">Mockup only: the results shown are placeholders, not a projection.</p>
+</div>
+</header>
+<main style="padding: 16px; display: flex; flex-direction: column; gap: 18px">
+<div style="border: 1px solid #E2E2E2; border-radius: 12px; overflow: hidden">
+<div style="display: grid; grid-template-columns: 34px minmax(0, 1fr) 48px 44px 52px; align-items: center; height: 36px; padding: 0 12px 0 6px; font-size: 11px; font-weight: 600; color: #5F5F5F; border-bottom: 1px solid #E2E2E2">
+<span style="text-align: center">#</span><span>Player</span><span style="text-align: right">W–L</span><span style="text-align: right">Avg</span><span style="text-align: right">Pts</span>
+</div>
+<sc-for list="{{board}}" as="b" hint-placeholder-count="6">
+<div style="{{b.rowStyle}}">
+<span style="font-family: 'Zilla Slab', serif; font-size: 20px; font-weight: 700; text-align: center">{{b.rank}}</span>
+<span style="font-size: 15px; font-weight: 700">{{b.name}}</span>
+<span style="font-size: 13px; text-align: right; color: #3D3D3D">{{b.record}}</span>
+<span style="font-size: 13px; text-align: right; color: #3D3D3D">{{b.avg}}</span>
+<span style="font-size: 16px; font-weight: 800; text-align: right">{{b.pts}}</span>
+</div>
+</sc-for>
+<div style="display: grid; grid-template-columns: 34px minmax(0, 1fr) 48px 44px 52px; align-items: center; height: 54px; padding: 0 12px 0 6px; background: #F6F5F1; border-top: 1px solid #E2E2E2">
+<span style="display: flex; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"></path><path d="M7 15l4-4 3 3 5-6"></path></svg></span>
+<span style="display: flex; flex-direction: column; line-height: 1.2"><b style="font-size: 15px">Nate Silver</b><span style="font-size: 11px; color: #5F5F5F">Base case · Silver Bulletin</span></span>
+<span style="font-size: 13px; text-align: right; color: #3D3D3D">{{nate.record}}</span>
+<span style="font-size: 13px; text-align: right; color: #3D3D3D">{{nate.avg}}</span>
+<span style="font-size: 16px; font-weight: 800; text-align: right">{{nate.pts}}</span>
+</div>
+</div>
+<p style="margin: -8px 0 0; font-size: 12px; line-height: 1.45; color: #5F5F5F">Points per race: Safe right 99, Likely right 94, Lean right 84 · Lean wrong 64, Likely wrong 44, Safe wrong 19. Nate scores on his exact odds and is a benchmark, not ranked. Pending: AK, ME, OH Senate.</p>
+<div style="background: #121212; color: #FFFFFF; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #CFCFCF">Biggest upset</span>
+<span style="font-family: 'Zilla Slab', serif; font-size: 26px; font-weight: 700">Texas Senate</span>
+<span style="font-size: 14px; line-height: 1.4; color: #E6E6E6">The group went 4–2 for R. D won. Sam and Priya called it.</span>
+</div>
+<section style="display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-family: 'Zilla Slab', serif; font-size: 22px; font-weight: 700">Race by race</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12px; color: #3D3D3D">
+<span style="display: flex; align-items: center; gap: 6px"><span style="width: 14px; height: 14px; border-radius: 7px; background: #FFFFFF; border: 1.5px solid #121212; display: flex; align-items: center; justify-content: center; box-sizing: border-box"><svg width="8" height="8" viewBox="0 0 12 12" fill="none" stroke="#121212" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5l2.3 2.3L9.5 3.5"></path></svg></span>Called it</span>
+<span style="display: flex; align-items: center; gap: 6px"><span style="width: 14px; height: 14px; border-radius: 3px; background: #E3A29B; opacity: 0.3"></span>Missed</span>
+</div>
+<div style="border: 1px solid #E2E2E2; border-radius: 12px; overflow: hidden">
+<div style="display: grid; grid-template-columns: 70px 38px repeat(6, 34px) minmax(0, 1fr); align-items: end; height: 44px; border-bottom: 1px solid #E2E2E2; font-size: 11px; font-weight: 700">
+<span style="padding: 0 0 8px 10px; color: #5F5F5F; font-weight: 600">Race</span>
+<span style="height: 44px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 8px; box-sizing: border-box; background: #F6F5F1; border-right: 1px solid #E2E2E2">Nate</span>
+<sc-for list="{{players}}" as="p" hint-placeholder-count="6">
+<span style="{{p.headStyle}}">{{p.name}}</span>
+</sc-for>
+<span style="padding: 0 0 8px; text-align: center; color: #5F5F5F; font-weight: 600">Result</span>
+</div>
+<sc-for list="{{rows}}" as="row" hint-placeholder-count="11">
+<div style="display: grid; grid-template-columns: 70px 38px repeat(6, 34px) minmax(0, 1fr); align-items: center; height: 46px; border-bottom: 1px solid #EFEFEF">
+<span style="padding-left: 10px; display: flex; flex-direction: column; line-height: 1.15"><b style="font-size: 13px">{{row.st}}</b><span style="font-size: 11px; color: #5F5F5F">{{row.office}}</span></span>
+<span style="height: 46px; display: flex; align-items: center; justify-content: center; background: #F6F5F1; border-right: 1px solid #E2E2E2">
+<span style="{{row.nate.chip}}">{{row.nate.text}}<sc-if value="{{row.nate.hit}}" hint-placeholder-val="{{false}}"><span style="position: absolute; bottom: -4px; right: -4px; width: 14px; height: 14px; border-radius: 7px; background: #FFFFFF; border: 1.5px solid #121212; display: flex; align-items: center; justify-content: center; box-sizing: border-box"><svg width="8" height="8" viewBox="0 0 12 12" fill="none" stroke="#121212" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5l2.3 2.3L9.5 3.5"></path></svg></span></sc-if></span>
+</span>
+<sc-for list="{{row.cells}}" as="cell" hint-placeholder-count="6">
+<span style="{{cell.wrap}}">
+<span style="{{cell.chip}}">{{cell.letter}}<sc-if value="{{cell.hit}}" hint-placeholder-val="{{false}}"><span style="position: absolute; bottom: -4px; right: -4px; width: 14px; height: 14px; border-radius: 7px; background: #FFFFFF; border: 1.5px solid #121212; display: flex; align-items: center; justify-content: center; box-sizing: border-box"><svg width="8" height="8" viewBox="0 0 12 12" fill="none" stroke="#121212" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5l2.3 2.3L9.5 3.5"></path></svg></span></sc-if></span>
+</span>
+</sc-for>
+<span style="display: flex; justify-content: center">
+<span style="{{row.resultStyle}}">{{row.result}}</span>
+</span>
+</div>
+</sc-for>
+</div>
+</section>
+<a href="Grid.dc.html" style="align-self: center; font-size: 14px; font-weight: 600; padding: 8px">← Back to everyone's picks</a>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1560}}'>
+var RACES = [
+  ['TX', 'Sen'], ['TX', 'Gov'], ['AK', 'Sen'], ['MI', 'Sen'], ['ME', 'Sen'], ['OH', 'Sen'],
+  ['OH', 'Gov'], ['KS', 'Sen'], ['IA', 'Sen'], ['IA', 'Gov'], ['GA', 'Gov']
+];
+var NATE = [0.737, 0.283, 0.595, 0.832, 0.704, 0.712, 0.789, 0.612, 0.589, 0.926, 0.631];
+var WINNERS = ['D', 'R', null, 'D', null, null, 'R', 'R', 'R', 'D', 'R'];
+var PLAYERS = [
+  { name: 'You', full: 'Duncan', picks: ['R1','R3','D1','D2','D1','R1','R2','R2','R1','D1','R1'] },
+  { name: 'Sam', full: 'Sam', picks: ['D1','R3','D2','D2','D2','D1','R1','R3','R1','D2','R2'] },
+  { name: 'Jess', full: 'Jess', picks: ['R2','R3','D1','D1','R1','R2','R2','R2','R2','D1','R2'] },
+  { name: 'Matt', full: 'Matt', picks: ['R1','R2','R1','R1','D1','R1','R3','R3','R2','R1','R2'] },
+  { name: 'Priya', full: 'Priya', picks: ['D1','R2','D2','D3','D2','D1','D1','R1','D1','D2','D1'] },
+  { name: 'Ben', full: 'Ben', picks: ['R2','R3','D1','D2','D1','D1','R2','R2','R1','D1','R1'] }
+];
+var ORDER = [2, 10, 8, 9, 7, 4, 3, 5, 6, 0, 1];
+function ro(a) { return ORDER.map(function (i) { return a[i]; }); }
+RACES = ro(RACES); NATE = ro(NATE);
+if (typeof WINNERS !== 'undefined') { WINNERS = ro(WINNERS); }
+PLAYERS.forEach(function (p) { p.picks = ro(p.picks); });
+var CONF = [0.6, 0.75, 0.9];
+var SHADE = {
+  R: [['#F3D6D3', '#7A2420'], ['#E3A29B', '#4A1210'], ['#B13A33', '#FFFFFF']],
+  D: [['#D5E0F0', '#1E3D6B'], ['#9DB5DA', '#0F2647'], ['#2C5A98', '#FFFFFF']]
+};
+var BAND = '#FBF3DF';
+
+function score(pWinner) { return Math.round(100 * (1 - Math.pow(1 - pWinner, 2))); }
+function chip(side, lvl, w, faded) {
+  var s = SHADE[side][lvl - 1];
+  return { position: 'relative', width: (w || 26) + 'px', height: '26px', borderRadius: '6px', display: 'flex',
+    alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 800, background: s[0], color: s[1],
+    opacity: faded ? 0.3 : 1 };
+}
+
+class Component extends DCLogic {
+  renderVals() {
+    var stats = PLAYERS.map(function (p) {
+      var pts = 0, w = 0, l = 0;
+      p.picks.forEach(function (c, i) {
+        var win = WINNERS[i];
+        if (!win) return;
+        var conf = CONF[Number(c[1]) - 1];
+        if (c[0] === win) { w++; pts += score(conf); } else { l++; pts += score(1 - conf); }
+      });
+      return { p: p, pts: pts, w: w, l: l, n: w + l };
+    });
+    stats.sort(function (a, b) { return b.pts - a.pts; });
+    var board = stats.map(function (s, i) {
+      var me = s.p.name === 'You';
+      return {
+        rank: String(i + 1), name: s.p.full + (me ? ' (you)' : ''), record: s.w + '–' + s.l,
+        avg: (s.pts / s.n).toFixed(1), pts: String(s.pts),
+        rowStyle: { display: 'grid', gridTemplateColumns: '34px minmax(0, 1fr) 48px 44px 52px', alignItems: 'center',
+          height: '50px', padding: '0 12px 0 6px', borderBottom: '1px solid #EFEFEF', background: me ? BAND : 'transparent' }
+      };
+    });
+    var npts = 0, nw = 0, nl = 0;
+    NATE.forEach(function (p, i) {
+      var win = WINNERS[i];
+      if (p === null || !win) return;
+      var pw = win === 'D' ? p : 1 - p;
+      npts += score(pw);
+      if (pw >= 0.5) nw++; else nl++;
+    });
+    var nate = { pts: String(npts), record: nw + '–' + nl, avg: (npts / (nw + nl)).toFixed(1) };
+
+    var rows = RACES.map(function (rc, i) {
+      var win = WINNERS[i];
+      var cells = PLAYERS.map(function (p, j) {
+        var c = p.picks[i];
+        var hit = !!win && c[0] === win;
+        return {
+          letter: c[0], hit: hit, chip: chip(c[0], Number(c[1]), 26, !!win && !hit),
+          wrap: { height: '46px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: j === 0 ? BAND : 'transparent' }
+        };
+      });
+      var p = NATE[i], nateCell;
+      if (p === null) {
+        nateCell = { text: '—', hit: false, chip: { width: '30px', height: '26px', borderRadius: '6px', border: '1px dashed #BDBDBD', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', color: '#6B6B6B', boxSizing: 'border-box' } };
+      } else {
+        var side = p >= 0.5 ? 'D' : 'R';
+        var fav = Math.max(p, 1 - p);
+        var lvl = fav < 0.65 ? 1 : (fav < 0.85 ? 2 : 3);
+        var nhit = !!win && side === win;
+        var ch = chip(side, lvl, 30, !!win && !nhit);
+        ch.fontSize = '11px';
+        nateCell = { text: String(Math.round(fav * 100)), hit: nhit, chip: ch };
+      }
+      var resultStyle = win
+        ? { minWidth: '30px', height: '26px', padding: '0 6px', boxSizing: 'border-box', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 800, background: SHADE[win][2][0], color: '#FFFFFF' }
+        : { fontSize: '11px', fontWeight: 600, color: '#6B6B6B' };
+      return { st: rc[0], office: rc[1], cells: cells, nate: nateCell, result: win ? win + ' won' : 'Pending', resultStyle: resultStyle };
+    });
+    var players = PLAYERS.map(function (p, j) {
+      return { name: p.name, headStyle: { height: '44px', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', paddingBottom: '8px', boxSizing: 'border-box', background: j === 0 ? BAND : 'transparent', fontSize: p.name.length > 4 ? '10px' : '11px' } };
+    });
+    return { board: board, nate: nate, rows: rows, players: players };
+  }
+}
+</script>
+</body>
+</html>

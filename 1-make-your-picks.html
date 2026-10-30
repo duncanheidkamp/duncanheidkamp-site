@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Make your picks</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&amp;family=Zilla+Slab:wght@600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button{font-family:inherit;cursor:pointer}
+a{color:#121212}a:hover{color:#5F5F5F}
+input[type=range]{width:100%;height:44px;margin:0;accent-color:#121212;cursor:pointer}
+</style>
+</helmet>
+<div style="width: 390px; height: 2700px; box-sizing: border-box; background: #FFFFFF; font-family: 'Libre Franklin', system-ui, sans-serif; color: #121212; display: flex; flex-direction: column">
+<header style="padding: 18px 16px 16px; border-bottom: 1px solid #E2E2E2; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; justify-content: space-between; align-items: center">
+<a href="#" style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none">duncanheidkamp.com</a>
+<span style="font-size: 13px; font-weight: 600; padding: 6px 12px; border: 1px solid #D6D6D6; border-radius: 999px">Duncan</span>
+</div>
+<div>
+<div style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #5F5F5F">2026 Midterms</div>
+<h1 style="margin: 4px 0 0; font-family: 'Zilla Slab', serif; font-size: 42px; line-height: 1; font-weight: 700">Pick'em</h1>
+<p style="margin: 10px 0 0; font-size: 15px; line-height: 1.45; color: #3D3D3D">Pick a winner in each race and how sure you are. Picks lock Tuesday, Nov 3 at 5:00 PM CT.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 600">
+<span>{{pickedLabel}}</span>
+<span style="color: #5F5F5F; font-weight: 500">Locks in 4d 3h</span>
+</div>
+<div style="height: 8px; background: #EDEDED; border-radius: 4px; overflow: hidden">
+<div style="{{barStyle}}"></div>
+</div>
+<div style="display: flex; gap: 14px; font-size: 12px; color: #5F5F5F">
+<span><b style="color: #121212">Lean</b> 60%</span>
+<span><b style="color: #121212">Likely</b> 75%</span>
+<span><b style="color: #121212">Safe</b> 90%</span>
+</div>
+</div>
+</header>
+<main style="padding: 16px; display: flex; flex-direction: column; gap: 12px">
+<sc-for list="{{races}}" as="race" hint-placeholder-count="11">
+<section style="border: 1px solid #E2E2E2; border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 12px; background: #FFFFFF">
+<div style="display: flex; align-items: center; gap: 10px">
+<span style="width: 36px; height: 36px; border-radius: 8px; background: #121212; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; flex-shrink: 0">{{race.st}}</span>
+<div style="display: flex; flex-direction: column; flex: 1; min-width: 0">
+<span style="font-size: 16px; font-weight: 700">{{race.title}}</span>
+<span style="font-size: 12px; color: #5F5F5F">{{race.note}}</span>
+</div>
+<svg width="44" height="44" viewBox="0 0 100 100" role="img" aria-label="{{race.shapeLabel}}" style="flex-shrink: 0; overflow: visible"><path d="{{race.shape}}" fill="{{race.shapeFill}}" stroke="{{race.shapeStroke}}" stroke-width="5" stroke-linejoin="round"></path></svg>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<button type="button" onClick="{{race.pickD}}" style="{{race.dStyle}}"><span style="{{race.dTag}}">D</span><span style="font-size: 14px; font-weight: 600; text-align: left; line-height: 1.2">{{race.d}}</span></button>
+<button type="button" onClick="{{race.pickR}}" style="{{race.rStyle}}"><span style="{{race.rTag}}">R</span><span style="font-size: 14px; font-weight: 600; text-align: left; line-height: 1.2">{{race.r}}</span></button>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid #D6D6D6; border-radius: 8px; overflow: hidden">
+<sc-for list="{{race.confs}}" as="c" hint-placeholder-count="3">
+<button type="button" onClick="{{c.pick}}" disabled="{{c.disabled}}" style="{{c.style}}">{{c.label}}</button>
+</sc-for>
+</div>
+</section>
+</sc-for>
+<section style="border: 1px solid #E2E2E2; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 12px; background: #F6F5F1">
+<div>
+<div style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #5F5F5F">Tiebreaker</div>
+<p style="margin: 6px 0 0; font-size: 16px; font-weight: 600; line-height: 1.35">What will the House seat split be?</p>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: baseline">
+<span style="font-family: 'Zilla Slab', serif; font-size: 32px; font-weight: 700; color: #2C5A98">{{houseDLabel}}</span>
+<span style="{{houseHint}}">{{houseHintText}}</span>
+<span style="font-family: 'Zilla Slab', serif; font-size: 32px; font-weight: 700; color: #B13A33">{{houseRLabel}}</span>
+</div>
+<div style="position: relative; height: 12px; border-radius: 6px; overflow: hidden; display: flex; background: #B13A33">
+<span style="{{houseBar}}"></span>
+<span style="position: absolute; left: 50.1%; top: 0; bottom: 0; width: 2px; background: #FFFFFF"></span>
+</div>
+<label style="display: flex; flex-direction: column; gap: 2px; font-size: 12px; color: #5F5F5F">
+<span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Republican House seats</span>
+<input type="range" min="180" max="255" step="1" value="{{houseR}}" onChange="{{onHouse}}">
+</label>
+<div style="display: flex; justify-content: space-between; font-size: 12px; color: #5F5F5F; margin-top: -8px">
+<span>More D</span><span>218 for a majority</span><span>More R</span>
+</div>
+</section>
+<div style="display: flex; flex-direction: column; gap: 10px; padding-top: 8px">
+<sc-if value="{{complete}}" hint-placeholder-val="{{false}}">
+<a href="Grid.dc.html" style="height: 54px; border-radius: 27px; background: #121212; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; text-decoration: none">Submit picks</a>
+</sc-if>
+<sc-if value="{{incomplete}}" hint-placeholder-val="{{true}}">
+<button type="button" disabled="{{true}}" style="height: 54px; border-radius: 27px; background: #E6E6E6; color: #6B6B6B; border: none; font-size: 16px; font-weight: 700">{{submitLabel}}</button>
+</sc-if>
+<p style="margin: 0; font-size: 13px; color: #5F5F5F; text-align: center">You'll see everyone's picks once you submit.</p>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":2700}}'>
+var SHAPES = {
+  AK: 'M20 20 L45 10 L60 15 L62 70 L72 72 L85 82 L95 95 L80 88 L65 80 L50 72 L40 75 L28 82 L10 90 L18 80 L12 72 L6 60 L14 50 L8 40 L14 32 Z',
+  GA: 'M15 5 L55 5 L55 12 L70 30 L85 50 L88 60 L82 75 L80 94 L35 94 L30 86 L28 70 L22 40 Z',
+  IA: 'M10 25 L82 25 L85 32 L84 40 L92 45 L95 52 L88 60 L85 72 L80 75 L15 75 L12 65 L10 50 L5 35 Z',
+  KS: 'M5 25 L80 25 L83 30 L88 33 L90 40 L95 45 L95 75 L5 75 Z',
+  ME: 'M40 5 L50 2 L58 10 L65 30 L78 38 L90 45 L72 60 L60 70 L50 82 L40 95 L32 80 L30 55 L32 30 Z',
+  MI: 'M10 25 L25 20 L40 22 L55 18 L65 25 L50 30 L35 33 L20 35 L10 32 Z M45 40 L55 35 L62 42 L65 55 L70 50 L75 58 L72 75 L65 90 L35 90 L32 75 L30 60 L35 48 Z',
+  OH: 'M20 10 L45 15 L60 8 L80 5 L82 40 L78 60 L70 72 L60 80 L50 88 L40 85 L30 90 L20 82 Z',
+  TX: 'M30 5 L48 5 L48 33 L62 37 L78 38 L92 40 L94 55 L96 66 L88 72 L72 82 L64 95 L56 96 L50 84 L44 74 L36 64 L26 60 L16 56 L5 44 L30 44 Z'
+};
+var STATE_NAMES = { AK: 'Alaska', GA: 'Georgia', IA: 'Iowa', KS: 'Kansas', ME: 'Maine', MI: 'Michigan', OH: 'Ohio', TX: 'Texas' };
+var RACES = [
+  { id: 'ak-sen', st: 'AK', title: 'Alaska Senate', note: 'Incumbent: Sullivan · slow count', r: 'Dan Sullivan', d: 'Mary Peltola' },
+  { id: 'ga-gov', st: 'GA', title: 'Georgia Governor', note: 'Open seat', r: 'Rick Jackson', d: 'Keisha Lance Bottoms' },
+  { id: 'ia-sen', st: 'IA', title: 'Iowa Senate', note: 'Open seat', r: 'Ashley Hinson', d: 'Josh Turek' },
+  { id: 'ia-gov', st: 'IA', title: 'Iowa Governor', note: 'Open seat', r: 'Zach Lahn', d: 'Rob Sand' },
+  { id: 'ks-sen', st: 'KS', title: 'Kansas Senate', note: 'Incumbent: Marshall', r: 'Roger Marshall', d: 'Adam Hamilton' },
+  { id: 'me-sen', st: 'ME', title: 'Maine Senate', note: 'Incumbent: Collins · ranked-choice', r: 'Susan Collins', d: 'Troy Jackson' },
+  { id: 'mi-sen', st: 'MI', title: 'Michigan Senate', note: 'Open seat', r: 'Mike Rogers', d: 'Abdul El-Sayed' },
+  { id: 'oh-sen', st: 'OH', title: 'Ohio Senate', note: 'Special election · Incumbent: Husted', r: 'Jon Husted', d: 'Sherrod Brown' },
+  { id: 'oh-gov', st: 'OH', title: 'Ohio Governor', note: 'Open seat', r: 'Vivek Ramaswamy', d: 'Amy Acton' },
+  { id: 'tx-sen', st: 'TX', title: 'Texas Senate', note: 'No incumbent · Cornyn lost the primary', r: 'Ken Paxton', d: 'James Talarico' },
+  { id: 'tx-gov', st: 'TX', title: 'Texas Governor', note: 'Incumbent: Abbott', r: 'Greg Abbott', d: 'Gina Hinojosa' }
+];
+var PARTY = {
+  R: { solid: '#B13A33', tint: '#F3D6D3', ink: '#7A2420' },
+  D: { solid: '#2C5A98', tint: '#D5E0F0', ink: '#1E3D6B' }
+};
+var LABELS = ['Lean', 'Likely', 'Safe'];
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      houseD: 218,
+      houseSet: false,
+      picks: {
+        'ak-sen': { side: 'D', conf: 1 }, 'ga-gov': { side: 'R', conf: 1 }, 'ia-sen': { side: 'R', conf: 1 },
+        'ia-gov': { side: 'D', conf: 1 }, 'ks-sen': { side: 'R', conf: 2 }, 'me-sen': { side: 'D', conf: 1 },
+        'mi-sen': { side: 'D', conf: 2 }, 'oh-sen': { side: 'R', conf: null }
+      }
+    };
+  }
+  setSide(id, side) {
+    var cur = this.state.picks[id] || {};
+    var next = Object.assign({}, this.state.picks);
+    next[id] = { side: side, conf: cur.conf || null };
+    this.setState({ picks: next });
+  }
+  setConf(id, conf) {
+    var cur = this.state.picks[id] || {};
+    if (!cur.side) return;
+    var next = Object.assign({}, this.state.picks);
+    next[id] = { side: cur.side, conf: conf };
+    this.setState({ picks: next });
+  }
+  renderVals() {
+    var self = this;
+    var picks = this.state.picks;
+    var count = 0;
+    var races = RACES.map(function (r) {
+      var p = picks[r.id] || {};
+      var done = !!(p.side && p.conf);
+      if (done) count++;
+      function btn(party) {
+        var sel = p.side === party;
+        return {
+          minHeight: '54px', display: 'flex', alignItems: 'center', gap: '10px', padding: '8px 12px',
+          borderRadius: '8px', border: '1.5px solid ' + (sel ? PARTY[party].solid : '#D6D6D6'),
+          background: sel ? PARTY[party].solid : '#FFFFFF', color: sel ? '#FFFFFF' : '#121212'
+        };
+      }
+      function tag(party) {
+        var sel = p.side === party;
+        return {
+          width: '24px', height: '24px', borderRadius: '6px', display: 'flex', alignItems: 'center',
+          justifyContent: 'center', fontSize: '12px', fontWeight: 800, flexShrink: 0,
+          background: sel ? '#FFFFFF' : PARTY[party].tint, color: sel ? PARTY[party].solid : PARTY[party].ink
+        };
+      }
+      var confs = [1, 2, 3].map(function (lv, i) {
+        var sel = p.conf === lv && !!p.side;
+        return {
+          label: LABELS[i], disabled: !p.side,
+          pick: function () { self.setConf(r.id, lv); },
+          style: {
+            height: '42px', border: 'none', borderLeft: i > 0 ? '1px solid #D6D6D6' : 'none',
+            background: sel ? '#121212' : '#FFFFFF', color: sel ? '#FFFFFF' : (p.side ? '#121212' : '#8A8A8A'),
+            fontSize: '13px', fontWeight: 600, cursor: p.side ? 'pointer' : 'default'
+          }
+        };
+      });
+      var col = p.side ? PARTY[p.side].solid : null;
+      return Object.assign({}, r, {
+        shape: SHAPES[r.st],
+        shapeFill: col || 'none',
+        shapeStroke: col || '#B5B5B5',
+        shapeLabel: STATE_NAMES[r.st] + (p.side ? (', picked ' + p.side) : ', not picked yet'),
+        pickD: function () { self.setSide(r.id, 'D'); },
+        pickR: function () { self.setSide(r.id, 'R'); },
+        dStyle: btn('D'), rStyle: btn('R'), dTag: tag('D'), rTag: tag('R'), confs: confs
+      });
+    });
+    var houseD = this.state.houseD;
+    var houseSet = this.state.houseSet;
+    var complete = count === RACES.length && houseSet;
+    var left = RACES.length - count;
+    return {
+      races: races,
+      pickedLabel: count + ' of ' + RACES.length + ' picked',
+      barStyle: { width: Math.round(count / RACES.length * 100) + '%', height: '100%', background: '#121212', borderRadius: '4px' },
+      houseR: 435 - houseD,
+      houseDLabel: 'D ' + houseD,
+      houseRLabel: 'R ' + (435 - houseD),
+      houseHintText: houseSet ? (houseD >= 218 ? 'D majority' : 'R majority') : 'Drag to set',
+      houseHint: { fontSize: '12px', fontWeight: 600, color: houseSet ? '#121212' : '#6B6B6B' },
+      houseBar: { width: (houseD / 435 * 100).toFixed(1) + '%', height: '100%', background: '#2C5A98' },
+      onHouse: function (e) { self.setState({ houseD: 435 - Number(e.target.value), houseSet: true }); },
+      complete: complete,
+      incomplete: !complete,
+      submitLabel: left > 0 ? ('Pick ' + left + ' more race' + (left === 1 ? '' : 's')) : 'Set the House split'
+    };
+  }
+}
+</script>
+</body>
+</html>

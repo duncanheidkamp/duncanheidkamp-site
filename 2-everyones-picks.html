@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Everyone's picks</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&amp;family=Zilla+Slab:wght@600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button{font-family:inherit;cursor:pointer}
+a{color:#121212}a:hover{color:#5F5F5F}
+</style>
+</helmet>
+<div style="width: 390px; height: 1420px; box-sizing: border-box; background: #FFFFFF; font-family: 'Libre Franklin', system-ui, sans-serif; color: #121212; display: flex; flex-direction: column">
+<header style="padding: 18px 16px 16px; border-bottom: 1px solid #E2E2E2; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; justify-content: space-between; align-items: center">
+<a href="#" style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none">duncanheidkamp.com</a>
+<span style="font-size: 13px; font-weight: 600; padding: 6px 12px; border: 1px solid #D6D6D6; border-radius: 999px">Duncan</span>
+</div>
+<div>
+<div style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #5F5F5F">2026 Midterms</div>
+<h1 style="margin: 4px 0 0; font-family: 'Zilla Slab', serif; font-size: 36px; line-height: 1.05; font-weight: 700">Everyone's picks</h1>
+<p style="margin: 8px 0 0; font-size: 14px; color: #3D3D3D">6 players · picks lock Tue, Nov 3 at 5:00 PM CT</p>
+</div>
+</header>
+<main style="padding: 16px; display: flex; flex-direction: column; gap: 16px">
+<div style="background: #F3F1EA; border-radius: 10px; padding: 12px 14px; display: flex; justify-content: space-between; align-items: center; gap: 12px">
+<span style="font-size: 14px; line-height: 1.4"><b>You're in.</b> You can still change picks until lock.</span>
+<a href="Main.dc.html" style="font-size: 14px; font-weight: 700; white-space: nowrap">Edit picks</a>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; font-size: 12px; color: #3D3D3D">
+<span style="display: flex; align-items: center; gap: 5px"><span style="width: 14px; height: 14px; border-radius: 3px; background: #D5E0F0"></span><span style="width: 14px; height: 14px; border-radius: 3px; background: #F3D6D3"></span>Lean</span>
+<span style="display: flex; align-items: center; gap: 5px"><span style="width: 14px; height: 14px; border-radius: 3px; background: #9DB5DA"></span><span style="width: 14px; height: 14px; border-radius: 3px; background: #E3A29B"></span>Likely</span>
+<span style="display: flex; align-items: center; gap: 5px"><span style="width: 14px; height: 14px; border-radius: 3px; background: #2C5A98"></span><span style="width: 14px; height: 14px; border-radius: 3px; background: #B13A33"></span>Safe</span>
+<span style="display: flex; align-items: center; gap: 5px"><span style="width: 8px; height: 8px; border-radius: 50%; background: #121212"></span>Against the group</span>
+</div>
+<div style="border: 1px solid #E2E2E2; border-radius: 12px; overflow: hidden">
+<div style="display: grid; grid-template-columns: 70px 38px repeat(6, 34px) minmax(0, 1fr); align-items: end; height: 48px; border-bottom: 1px solid #E2E2E2; font-size: 11px; font-weight: 700">
+<span style="padding: 0 0 8px 10px; color: #5F5F5F; font-weight: 600">Race</span>
+<span style="height: 48px; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; padding-bottom: 6px; box-sizing: border-box; background: #F6F5F1; border-right: 1px solid #E2E2E2; line-height: 1.1"><span>Nate</span><span style="font-size: 9px; font-weight: 600; color: #5F5F5F">model</span></span>
+<sc-for list="{{players}}" as="p" hint-placeholder-count="6">
+<span style="{{p.headStyle}}">{{p.name}}</span>
+</sc-for>
+<span style="padding: 0 0 8px; text-align: center; color: #5F5F5F; font-weight: 600">Group</span>
+</div>
+<sc-for list="{{rows}}" as="row" hint-placeholder-count="11">
+<div style="display: grid; grid-template-columns: 70px 38px repeat(6, 34px) minmax(0, 1fr); align-items: center; height: 46px; border-bottom: 1px solid #EFEFEF">
+<span style="padding-left: 10px; display: flex; flex-direction: column; line-height: 1.15"><b style="font-size: 13px">{{row.st}}</b><span style="font-size: 11px; color: #5F5F5F">{{row.office}}</span></span>
+<span style="height: 46px; display: flex; align-items: center; justify-content: center; background: #F6F5F1; border-right: 1px solid #E2E2E2">
+<span style="{{row.nateStyle}}">{{row.nateText}}</span>
+</span>
+<sc-for list="{{row.cells}}" as="cell" hint-placeholder-count="6">
+<span style="{{cell.wrap}}">
+<span style="{{cell.chip}}">{{cell.letter}}<sc-if value="{{cell.dissent}}" hint-placeholder-val="{{false}}"><span style="position: absolute; top: -3px; right: -3px; width: 8px; height: 8px; border-radius: 50%; background: #121212; border: 2px solid #FFFFFF"></span></sc-if></span>
+</span>
+</sc-for>
+<span style="display: flex; flex-direction: column; align-items: center; gap: 4px">
+<span style="{{row.groupText}}">{{row.group}}</span>
+<span style="width: 40px; height: 5px; border-radius: 3px; overflow: hidden; display: flex; background: #B13A33"><span style="{{row.dBar}}"></span></span>
+</span>
+</div>
+</sc-for>
+<div style="display: grid; grid-template-columns: 70px 38px repeat(6, 34px) minmax(0, 1fr); align-items: center; height: 50px; background: #FAFAF8">
+<span style="padding-left: 10px; display: flex; flex-direction: column; line-height: 1.15"><b style="font-size: 12px">House D</b><span style="font-size: 11px; color: #5F5F5F">tiebreaker</span></span>
+<span style="height: 50px; display: flex; align-items: center; justify-content: center; border-right: 1px solid #E2E2E2; font-size: 12px; color: #5F5F5F">—</span>
+<sc-for list="{{seats}}" as="s" hint-placeholder-count="6">
+<span style="{{s.style}}">{{s.n}}</span>
+</sc-for>
+<span style="text-align: center; font-size: 11px; color: #5F5F5F">avg {{seatsAvg}}</span>
+</div>
+</div>
+<p style="margin: -6px 0 0; font-size: 12px; line-height: 1.45; color: #5F5F5F">Nate = Silver Bulletin win probability for the favorite, as of Oct 30. Group tally excludes Nate.</p>
+<section style="display: flex; flex-direction: column; gap: 10px; padding-top: 4px">
+<h2 style="margin: 0; font-family: 'Zilla Slab', serif; font-size: 22px; font-weight: 700">Share to the group chat</h2>
+<div style="background: #F6F5F1; border-radius: 10px; padding: 14px; display: flex; flex-direction: column; gap: 10px; font-size: 13px">
+<b>Duncan's 2026 picks</b>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px 6px">
+<sc-for list="{{share}}" as="sh" hint-placeholder-count="11">
+<span style="display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600"><span style="{{sh.sq}}"></span>{{sh.label}}</span>
+</sc-for>
+</div>
+<span>House: D 222 – R 213</span>
+<span style="color: #5F5F5F">duncanheidkamp.com/midterms</span>
+</div>
+<button type="button" style="height: 52px; border-radius: 26px; background: #121212; color: #FFFFFF; border: none; font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"></path></svg>
+Copy my picks
+</button>
+</section>
+<a href="Results.dc.html" style="align-self: center; font-size: 14px; font-weight: 600; padding: 8px">Preview election night →</a>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1420}}'>
+var RACES = [
+  ['TX', 'Sen'], ['TX', 'Gov'], ['AK', 'Sen'], ['MI', 'Sen'], ['ME', 'Sen'], ['OH', 'Sen'],
+  ['OH', 'Gov'], ['KS', 'Sen'], ['IA', 'Sen'], ['IA', 'Gov'], ['GA', 'Gov']
+];
+var NATE = [0.737, 0.283, 0.595, 0.832, 0.704, 0.712, 0.789, 0.612, 0.589, 0.926, 0.631];
+var PLAYERS = [
+  { name: 'You', seats: 222, picks: ['R1','R3','D1','D2','D1','R1','R2','R2','R1','D1','R1'] },
+  { name: 'Sam', seats: 230, picks: ['D1','R3','D2','D2','D2','D1','R1','R3','R1','D2','R2'] },
+  { name: 'Jess', seats: 220, picks: ['R2','R3','D1','D1','R1','R2','R2','R2','R2','D1','R2'] },
+  { name: 'Matt', seats: 212, picks: ['R1','R2','R1','R1','D1','R1','R3','R3','R2','R1','R2'] },
+  { name: 'Priya', seats: 236, picks: ['D1','R2','D2','D3','D2','D1','D1','R1','D1','D2','D1'] },
+  { name: 'Ben', seats: 222, picks: ['R2','R3','D1','D2','D1','D1','R2','R2','R1','D1','R1'] }
+];
+var ORDER = [2, 10, 8, 9, 7, 4, 3, 5, 6, 0, 1];
+function ro(a) { return ORDER.map(function (i) { return a[i]; }); }
+RACES = ro(RACES); NATE = ro(NATE);
+if (typeof WINNERS !== 'undefined') { WINNERS = ro(WINNERS); }
+PLAYERS.forEach(function (p) { p.picks = ro(p.picks); });
+var SHADE = {
+  R: [['#F3D6D3', '#7A2420'], ['#E3A29B', '#4A1210'], ['#B13A33', '#FFFFFF']],
+  D: [['#D5E0F0', '#1E3D6B'], ['#9DB5DA', '#0F2647'], ['#2C5A98', '#FFFFFF']]
+};
+var BAND = '#FBF3DF';
+
+function chip(side, lvl, w) {
+  var s = SHADE[side][lvl - 1];
+  return { position: 'relative', width: (w || 26) + 'px', height: '26px', borderRadius: '6px', display: 'flex',
+    alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 800, background: s[0], color: s[1] };
+}
+
+class Component extends DCLogic {
+  renderVals() {
+    var rows = RACES.map(function (rc, i) {
+      var codes = PLAYERS.map(function (p) { return p.picks[i]; });
+      var nD = codes.filter(function (c) { return c[0] === 'D'; }).length;
+      var nR = codes.length - nD;
+      var maj = nD > nR ? 'D' : (nR > nD ? 'R' : null);
+      var cells = codes.map(function (c, j) {
+        return {
+          letter: c[0],
+          chip: chip(c[0], Number(c[1])),
+          dissent: !!maj && c[0] !== maj,
+          wrap: { height: '46px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: j === 0 ? BAND : 'transparent' }
+        };
+      });
+      var p = NATE[i];
+      var nateStyle, nateText;
+      if (p === null) {
+        nateText = '—';
+        nateStyle = { width: '30px', height: '26px', borderRadius: '6px', border: '1px dashed #BDBDBD', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', color: '#6B6B6B', boxSizing: 'border-box' };
+      } else {
+        var side = p >= 0.5 ? 'D' : 'R';
+        var fav = Math.max(p, 1 - p);
+        var lvl = fav < 0.65 ? 1 : (fav < 0.85 ? 2 : 3);
+        nateText = String(Math.round(fav * 100));
+        nateStyle = chip(side, lvl, 30);
+        nateStyle.fontSize = '11px';
+      }
+      return {
+        st: rc[0], office: rc[1], cells: cells, nateText: nateText, nateStyle: nateStyle,
+        group: maj ? (Math.max(nD, nR) + '–' + Math.min(nD, nR) + ' ' + maj) : (nD + '–' + nR + ' split'),
+        groupText: { fontSize: '11px', fontWeight: 700, color: maj ? '#121212' : '#8A5A00', whiteSpace: 'nowrap' },
+        dBar: { width: Math.round(nD / codes.length * 100) + '%', height: '100%', background: '#2C5A98' }
+      };
+    });
+    var players = PLAYERS.map(function (p, j) {
+      return { name: p.name, headStyle: { height: '48px', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', paddingBottom: '8px', boxSizing: 'border-box', background: j === 0 ? BAND : 'transparent', fontSize: p.name.length > 4 ? '10px' : '11px' } };
+    });
+    var seats = PLAYERS.map(function (p, j) {
+      return { n: String(p.seats), style: { height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: 700, background: j === 0 ? BAND : 'transparent' } };
+    });
+    var total = PLAYERS.reduce(function (a, p) { return a + p.seats; }, 0);
+    var share = RACES.map(function (rc, i) {
+      var c = PLAYERS[0].picks[i];
+      return { label: rc[0] + '-' + rc[1][0], sq: { width: '14px', height: '14px', borderRadius: '3px', background: SHADE[c[0]][2][0], flexShrink: 0 } };
+    });
+    return { rows: rows, players: players, seats: seats, seatsAvg: (total / PLAYERS.length).toFixed(1), share: share };
+  }
+}
+</script>
+</body>
+</html>
