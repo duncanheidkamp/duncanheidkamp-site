@@ -15,9 +15,10 @@ Static homepage replacing the previous WordPress site, plus small apps that live
 |---|---|
 | `index.html` | Homepage markup |
 | `style.css` | Homepage styles, mobile-first |
-| `vercel.json` | Enables clean URLs (`/midterms/admin` → `midterms/admin.html`) |
+| `vercel.json` | Enables clean URLs (`/midterms/admin` → `midterms/admin.html`) and proxies `/bigten` to its own Vercel project |
 | `package.json` | `"type": "module"` for the API, plus `dev` / `test` scripts. No dependencies. |
 | `midterms/` | 2026 Midterms Pick'em (see below) |
+| `/bigten` | Big Ten Title Race Simulator. Not in this repo: it's a separate Vite app (`~/projects/bigten`, Vercel project `bigten`) served here via a rewrite to `bigten.vercel.app` |
 | `api/midterms/[action].js` | The pick'em backend (one function, several actions) |
 | `lib/midterms/` | Server-only helpers: Supabase store, PIN/session auth |
 | `scripts/dev-server.js` | Local server for static files + the API, with an in-memory database |
