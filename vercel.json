@@ -1,7 +1,8 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/bigten", "destination": "https://bigten.vercel.app/bigten" },
+    { "source": "/bigten", "destination": "https://bigten.vercel.app/bigten/" },
+    { "source": "/bigten/", "destination": "https://bigten.vercel.app/bigten/" },
     { "source": "/bigten/:path*", "destination": "https://bigten.vercel.app/bigten/:path*" }
   ]
 }
