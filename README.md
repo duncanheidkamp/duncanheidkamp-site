@@ -86,3 +86,23 @@ Friends pick a winner and a confidence (Lean 60% / Likely 75% / Safe 90%) in 12 
 
 - A 4-digit PIN is "keep friends honest" security, not real security, and there's no rate limit on guesses.
 - Pool size is capped at 15 players.
+
+---
+
+## Thanksgiving Bingo (`/thanksgiving-bingo`)
+
+Political bingo for Thanksgiving dinner. Deal a random card or pick 24 squares, tap them as they come up, then "Share my board" saves the card and opens the share sheet with a Wordle-style grid (⬛ not marked, 🟦 marked, 🟥 on a bingo line) and a link (`/thanksgiving-bingo?b=<id>`) to the saved card.
+
+| Path | What it is |
+|---|---|
+| `thanksgiving-bingo/js/topics.js` | **The curated squares.** Edit, commit, push. |
+| `thanksgiving-bingo/js/bingo.js` | Lines, dealing, share text (unit-tested) |
+| `thanksgiving-bingo/js/app.js` | The UI: home, pick, play, shared-card view |
+| `api/bingo/[action].js` | `GET/POST topics`, `POST boards`, `GET board` |
+| `lib/bingo/store.js` | Supabase (prod) / in-memory (dev) store |
+| `thanksgiving-bingo/schema.sql` | Supabase tables, paste into the SQL editor once |
+
+- **Setup:** run `thanksgiving-bingo/schema.sql` in the same Supabase project as the pick'em. It reuses `MIDTERMS_SUPABASE_URL` / `MIDTERMS_SUPABASE_SERVICE_KEY` (or set `BINGO_SUPABASE_URL` / `BINGO_SUPABASE_SERVICE_KEY`).
+- **Player-added squares** go live straight away (no filter) and show up for everyone under "Added by players". To pull one, set `hidden = true` on its row in `bingo_topics`.
+- Progress is kept in the browser's localStorage, so a refresh mid-dinner loses nothing. Saved cards are never edited; sharing again saves a new one.
+- Without the tables, the game still plays; only sharing and adding squares fail.
